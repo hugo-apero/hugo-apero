@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ $caller := . }}
+<main class="page-main pa4" role="main">
+  <section class="blog-intro mw8 center tc mb5">
+    <h2 class="f2 f1-ns lh-solid center fw4">{{ .Title | markdownify }}</h2>
+    <p class="f6 f5-ns measure lh-copy center">{{ .Description | markdownify }}</p>
+    {{ if .Params.show_author_byline }}<p class="f7 measure lh-copy tc center i">{{ if .Params.author }}Written by {{ .Params.author }}{{ end }}</p>{{ end }}
+  </section>
+  <section class="blog-content db flex-ns flex-row-ns flex-wrap-ns items-start mw8 center">
+    {{ $paginator := .Paginate (where .RegularPagesRecursive "Type" "blog").ByDate.Reverse }}
+      {{ range $paginator.Pages }}
+        {{ .Scratch.Set "$root" $caller }}
+        {{ partial "shared/summary-grid" . }}
+      {{ end }}
+    {{ partial "shared/list-pagination.html" . }}
+  </section>
+</main>
+{{ end }}

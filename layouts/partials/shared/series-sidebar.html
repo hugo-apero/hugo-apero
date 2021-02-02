@@ -1,0 +1,29 @@
+{{ $page := . }}                       <!--save current page-->
+{{ $section := $page.CurrentSection }} <!--save current section-->
+
+{{ $series_toc_label := .Params.sidebar.text_series_label | default "In this series" }}
+{{ $page_toc_label := .Params.sidebar.text_contents_label | default "On this page" }}
+<div class="flex items-start sticky ph4 pb4">
+  <div class="w-two-thirds w-50-l ph0">
+    {{ with $section }}
+    <h2 class="mt3 mb3 f5 fw7 ttu tracked"><a class="no-underline dim" href="{{ .RelPermalink }}">{{ end }}{{ $series_toc_label }}</a></h2>
+    <nav id="SeriesTableOfContents">
+        <ul>
+        {{ range $section.Pages }}
+          {{ $active := eq .RelPermalink $page.RelPermalink }}
+          <li class="{{ if $active }}active{{ end }}" hugo-nav="{{ .RelPermalink }}"><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+        {{ end }}
+        </ul>
+      </nav>
+  </div>
+  {{ $headers := findRE "<h[2].*>" $page.Content }}
+  {{- $has_headers := ge (len $headers) 1 -}}
+  {{- if $has_headers -}}
+  <details open id="PageTableOfContents">
+    <summary><h2 class="mv0 f5 fw7 ttu tracked dib">{{ $page_toc_label }}</h2></summary>
+    <div class="pl2 pr0 mh0">
+    {{ $page.TableOfContents }}
+    </div>
+  </details>
+  {{ end }}
+</div>

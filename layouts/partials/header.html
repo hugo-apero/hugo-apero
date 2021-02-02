@@ -1,0 +1,21 @@
+{{ $page := . }}
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="{{ .Site.BaseURL }}" title="Home">
+      {{ if .Site.Params.logo }}<img src="{{ .Site.Params.logo }}" class="dib db-l h2 w-auto" alt="{{ .Site.Title }}">{{ else }}<span class="f4 fw7">{{ .Site.Title }}</span>{{ end }}
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l {{ if $.Site.Params.navallcaps }}ttu tracked{{ end }}">
+      {{ range .Site.Menus.header }}
+        {{ $active := or ($page.IsMenuCurrent "header" .) ($page.HasMenuCurrent "header" .) }}
+        {{ $active = or $active (eq $page.Section (trim .URL "/")) }}
+        {{ $active = or $active (eq $page.RelPermalink .URL ) }}
+      <a class="link f6 f5-l dib pv1 ph2 {{ if $active }}active{{ end }}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+      {{ end }}
+      {{ if .Site.Params.socialInHeader }}
+      <div class="dib v-mid">
+        {{ partial "shared/social-links.html" . }}
+      </div>
+      {{ end }}
+    </div>
+  </nav>
+</header>

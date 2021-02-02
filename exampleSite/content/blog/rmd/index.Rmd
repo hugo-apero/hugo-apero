@@ -1,0 +1,39 @@
+---
+title: "An Rmd post"
+subtitle: ""
+excerpt: "testing the excerpt field"
+date: 2020-12-30
+author: "Alison Hill"
+draft: false
+images:
+series:
+tags:
+categories:
+layout: single
+---
+
+```{r}
+knitr::opts_chunk$set(fig.path = "figs/", collapse = TRUE)
+```
+
+
+## An empty post
+
+<i class="fas fa-mug-hot"></i> woot
+
+Yay fontawesome works.
+
+## Well let's try penguins
+
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm)) +
+  geom_histogram(aes(fill = species), alpha = 0.5, position = "identity") +
+  scale_fill_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+

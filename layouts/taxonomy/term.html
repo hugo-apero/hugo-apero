@@ -1,0 +1,15 @@
+{{ define "main" }}
+{{ $caller := . }}
+<main class="page-main pa4" role="main">
+  <section class="blog-intro mw7 center mb5">
+    <h1 class="f2 f1-ns fw4 lh-solid tc center i">{{ .Title }}</h1>
+    <p class="f6 f5-ns measure lh-copy tc center">{{ .Description | markdownify }}</p>
+  </section>
+  <section class="blog-content mw7 center">
+  {{ range .RegularPages.ByDate.Reverse }}
+    {{ .Scratch.Set "$root" $caller }}
+    {{ partial "shared/summary" . }}
+  {{ end }}
+  </section>
+</main>
+{{ end }}

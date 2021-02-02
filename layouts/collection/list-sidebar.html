@@ -1,0 +1,24 @@
+{{ define "main" }}
+{{ $caller := . }}
+<main class="page-main pa4 {{ .Kind }}" role="main">
+  <section class="blog-content mw7 center">
+    {{ if not (eq .FirstSection .CurrentSection) }}
+      {{ partial "shared/breadcrumb.html" . }}
+    {{ end }}
+    {{ $paginator := .Paginate (where .Pages "Type" "collection").ByWeight }}
+      {{ range $paginator.Pages }}
+        {{ .Scratch.Set "$root" $caller }}
+        {{ partial "shared/summary-section.html" . }}
+      {{ end }}
+    {{ partial "shared/list-pagination.html" . }}
+  </section>
+</main>
+<aside class="page-sidebar" role="complementary">
+  {{ if eq .FirstSection .CurrentSection }}
+    {{ partial "shared/sidebar-scaffold.html" . }}
+  {{ else }}
+    {{ partial "shared/sidebar/sidebar-image.html" . }}
+    {{ partial "shared/section-sidebar.html" . }}
+  {{ end }}
+</aside>
+{{ end }}

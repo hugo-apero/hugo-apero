@@ -1,0 +1,43 @@
+<section class="event-details cf pt5-ns pt4">
+  {{ with .Params.excerpt }}
+  <div class="first-column">
+    <h5 class="row-label">Abstract</h5>
+  </div>
+  <div class="second-column">
+    <p class="row-details">{{ . }}</p>
+  </div>
+  {{ end }}
+  {{ if .Date }}
+  <div class="first-column">
+    <h5 class="row-label">Date</h5>
+  </div>
+  <div class="second-column">
+    <p class="row-details">{{ partial "shared/date-range.html" . }}</p>
+  </div>
+  <div class="first-column">
+    <h5 class="row-label">Time</h5>
+  </div>
+  <div class="second-column">
+    <p class="row-details">{{ partial "shared/time-range.html" . }}</p>
+  </div>
+  {{ end }}
+  {{ with .Params.location }}
+  <div class="first-column">
+    <h5 class="row-label">Location</h5>
+  </div>
+  <div class="second-column">
+    <p class="row-details">{{ . }}</p>
+  </div>
+  {{ end }}
+  {{ if .Params.event }}
+  <div class="first-column">
+    <h5 class="row-label">Event</h5>
+  </div>
+  <div class="second-column">
+      <p class="row-details">
+        {{ with .Params.event_url }}<a href="{{ . | safeHTML }}" target="_blank">{{ end }}
+          {{ .Params.event }}{{ if .Params.event_url }}</a>{{ end }}
+      </p>
+  </div>
+  {{ end }}
+</section>

@@ -1,0 +1,12 @@
+{{ $page := . }}                       <!--save current page-->
+{{ $section := $page.CurrentSection }} <!--save current section-->
+{{ $is_root := eq .CurrentSection .FirstSection }}
+
+{{ partial "shared/sidebar/sidebar-image.html" $page }}
+
+<div class="blog-info ph4 pt4 pb4 pb0-l">
+  {{ partial "shared/sidebar/sidebar-header.html" $section }}
+  {{ partial "shared/sidebar/sidebar-link.html" .Params.sidebar }}
+</div>
+
+{{ partial "shared/sidebar/sidebar-adunit.html" .Params.sidebar }}

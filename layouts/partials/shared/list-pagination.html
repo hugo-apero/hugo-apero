@@ -1,0 +1,26 @@
+{{ $previous_label := "Newer" }}
+{{ $next_label := "Older" }}
+{{ $pag := $.Paginator }}
+{{ if gt $pag.TotalPages 1 }}
+<div class="list-pagination w-100">
+  <ul class="paginate list pl0 tc dt w-100 ma0">
+    <li class="dtc w-25 tl v-mid">
+    {{ if $pag.HasPrev }}
+      <a href="{{ $pag.Prev.URL }}" class="previous pa2 db fw6" aria-label="Previous">&larr; {{ $previous_label }}</a>
+    {{ else }}
+      <span class="previous pa2 db fw6">&larr; {{ $previous_label }}</span>
+    {{ end }}
+    </li>
+    <li class="dtc w-50 v-mid">
+      <span class="page_number fw6 f7 ttu tracked">{{ $pag.PageNumber }} of {{ $pag.TotalPages }}</span>
+    </li>
+    <li class="dtc w-25 tr v-mid">
+    {{ if $pag.HasNext }}
+      <a href="{{ $pag.Next.URL }}" class="next pa2 db fw6" aria-label="Next">{{ $next_label }} &rarr;</a>
+    {{ else }}
+      <span class="next pa2 db fw6">{{ $next_label }} &rarr;</span>
+    {{ end }}
+    </li>
+  </ul>
+</div>
+{{ end }}

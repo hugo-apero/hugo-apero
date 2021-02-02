@@ -1,0 +1,7 @@
+{{ if .show_sidebar_adunit }}
+<div class="ad-unit pa4">
+  {{ range site.Data.ads }}
+  <p class="f7 measure-narrow lh-copy mv0 pt5"><span class="b ttu db">{{ .title }}</span><span>{{ .body | markdownify }}</span></p>
+  {{ end }}
+</div>
+{{ end }}

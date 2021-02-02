@@ -1,0 +1,14 @@
+{{ $start := time .Date }}
+{{ $stop := "" }}
+{{ $time_format := "3:04 PM" }}
+
+{{ with .Params.date_end }}
+  {{ $stop := time . }}
+  {{ if and (eq (time $start).Hour (time $stop).Hour) (eq (time $start).Minute (time $stop).Minute) }}
+      {{ (time $start).Format $time_format }}
+  {{ else }}
+      {{ (time $start).Format $time_format }} &ndash; {{ (time $stop).Format $time_format }}
+  {{ end }}
+{{ else }}
+  {{ (time $start).Format $time_format }}
+{{ end }}

@@ -1,0 +1,6 @@
+<!--section level-->
+{{ with .Params.sidebar }}
+  {{ with .title }}<h1 class="f3">{{ . | markdownify }}</h1>{{ end }}
+  {{ with .description }}<p class="f6 lh-copy measure">{{ . | markdownify }}</p>{{ end }}
+  {{ with .author }}<p class="f7 measure lh-copy i mh0-l">Written by {{ . | markdownify }}</p>{{ end }}
+{{ end }}

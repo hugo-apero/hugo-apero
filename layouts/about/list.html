@@ -1,0 +1,99 @@
+{{ define "main" }}
+{{ $page := . }}
+<main class="page-main pa4" role="main">
+  <section class="page-content mw8 center">
+    
+    <!--begin header-->
+    {{ if .Params.show_header }}
+    {{ $header := printf "/%s/%s" .Section "header/index.md" }}
+    {{ with site.GetPage $header }}
+      <header class="page-header bb b--black-10 bw1 pb4 mb5 {{ if .Params.text_align_right }}tr{{ end }}">
+      {{ if .Params.show_title_as_headline }}<h1 class="f2 f1-m f-headline-l fw5-ns mv4 lh-solid tracked-tight-ns db">{{ $page.Title | markdownify }}</h1>
+      {{ else }}<h1 class="f2 f1-m f-headline-l fw5-ns mv4 lh-solid tracked-tight-ns db">{{ .Params.headline | markdownify }}</h1>{{ end }}
+      {{ with .Content}}
+        <div class="pt2 f4 measure-wide lh-copy dib">{{ . | markdownify }}</div>
+      {{ end }}
+      </header>
+    {{ end }}
+    {{ end }}
+
+    <section class="page-body">
+      <!--make the flexbox a row only on not small screens-->
+      <div class="flex items-start flex-row-l flex-column-ns flex-column {{ if not .Params.show_header }}mt4{{ end }}">
+        
+        <!--begin main content column: 2/3-->
+        {{ $main := printf "/%s/%s" .Section "main/index.md" }}
+        {{ with site.GetPage $main }}
+        <div class="order-2 {{ if $page.Params.sidebar_left }}ml5-l order-2-l{{ else }}mr4-l order-1-l{{ end }} w-two-thirds-l w-100-ns pt5">
+          {{ if $page.Params.show_header }}
+            {{ with .Title}}
+              <h2 class="about-main f2 fw7 tl">{{ . | markdownify }}</h2>
+            {{ end }}
+          {{ else }}
+            {{ with .Title }}  
+            <h1 class="f2 f1-m f-headline-l fw5-ns mv4 lh-solid tracked-tight-ns">{{ . | markdownify }}</h1>
+            {{ end }}
+          {{ end }}
+          {{ if .Params.show_intro }}
+            <div class="pv3 f4 measure lh-copy dib">{{ .Params.intro | markdownify }}</div>
+          {{ end }}
+          {{ partial "shared/summary-li" . }}
+          {{ if .Params.show_outro }}
+            <div class="pt3 measure-wide lh-copy cf">{{ .Params.outro | markdownify }}</div>
+          {{ end }}
+        </div> <!--close wide column -->
+        {{ end }}
+
+    <!--begin sidebar-->
+    {{ $sidebar := printf "/%s/%s" .Section "sidebar/index.md" }}
+    {{ with site.GetPage $sidebar }}
+        <sidebar class="about-sidebar order-1 {{ if $page.Params.sidebar_left }}order-1-l{{ else }}mr4-l order-2-l{{ end }} mh0 w-third-l w-100-ns" id="profile">
+          <div class="pt3 pb1 pb2-ns tc ph4">
+            {{ if .Params.avatar }}
+              {{ $avatar := printf "/%s%s" .File.Dir .Params.avatar }}
+              {{ $avatar_shape := .Params.avatar_shape | default "circle" }}
+              {{ with $avatar_shape }}
+                <img src="{{ $avatar }}" class="h4 w4 dib {{if eq . "rounded"}}br3{{end}}{{if eq . "circle"}}br-100{{end}}" alt="avatar">
+              {{ end }}
+            {{ end }}
+            <h2 class="f-subheadline f4-ns fw6">{{ .Params.author }}</h2>
+            <h5 class="f-subheadline f4 fw2 ttu tracked">{{ .Params.role | markdownify }}</h5>
+            {{ if .Params.show_social_links }}
+              <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2">
+              {{ partial "shared/social-links.html" . }}
+              </div>
+            {{ end }}
+            </div>
+            
+            {{ if .Params.show_audio_link }}
+            <div class="pa1 pa2-ns tc ph4">
+              {{ range .Params.audio_link }}
+                <p class="fw2 pb1">{{ .name }}</p>
+                <p>
+                <audio controls>
+                  <source src="{{ .url }}" type="audio/mp4">
+                  Your browser does not support the audio element.
+                </audio> 
+                </p>
+              {{ end }}
+            </div> 
+            {{ end }}
+          
+          <div class="pa1 pa2-ns tc ph4">
+            <h5 class="f-subheadline f4 fw2 ttu tracked">{{ .Params.link_list_label }}</h5>
+            <ul class="list measure center ph4 pb4">
+            {{ range .Params.link_list }}
+              <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-20">
+                <a href="{{ .url }}" target="_blank">{{ .name }}</a>
+              </li>
+            {{ end }}
+            </ul>
+          </div>
+        </sidebar>  
+        {{ end }}
+        
+      </div>    <!--close flex-->
+    </section>  <!--close body section-->
+  </section>    <!--close page content section-->
+</main>
+{{ end }}

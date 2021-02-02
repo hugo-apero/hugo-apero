@@ -1,0 +1,30 @@
+{{ $page := . }}                           <!--save current page-->
+{{ $section := $page.CurrentSection }}     <!--save branch section-->
+{{ $root := .Scratch.Get "$root" }}        <!--save root section-->
+
+<article class="w-100 w-50-m w-third-l mb4 pb4 bb bw1 bw0-ns pb0-ns">
+  <!--if show_post_thumbnail is TRUE in root-->
+  {{ if $root.Params.show_post_thumbnail }}
+  <div class="ph0 ph2-m ph3-l">
+    <!--featured image for the leaf bundle-->
+    {{- $images := $page.Resources.ByType "image" -}}
+    {{ $leaf := $images.GetMatch "*feature*" }}
+    {{- $hex := $images.GetMatch "*hex*" -}}
+    {{- $thumbnail := cond (ne $hex nil) $hex $leaf -}}
+    <!--sidebar image for the branch bundle-->
+    {{ $branch := ($section.Resources.ByType "image").GetMatch "*feature*" }}
+    {{- $thumbnail := cond (ne $thumbnail nil) $thumbnail $branch -}}
+    <div class="aspect-ratio {{ if (ne $hex nil) }}aspect-ratio--5x7 contain{{ else }}aspect-ratio--1x1 cover{{ end }} dim"{{ with $thumbnail }}style="background: url('{{ .RelPermalink | absURL }}') center center no-repeat"{{ end }}><a href="{{ .Permalink }}" class="w-100 absolute top-0 bottom-0"></a></div>
+  </div>
+  {{ end }}
+  <div class="ph0 pa2-m pa3-l">
+    <h1 class="f3 f4-l mv2 lh-title fw4"><a href="{{ .RelPermalink }}" class="db">{{ .Title | markdownify }}</a></h1>
+    {{ range first 1 (.GetTerms "series") }}
+      <h2 class="f5"><i class="fas fa-stream fa-fw pr1"></i><small class="f5 ttu tracked">Series: </small><a class="link i dim" href="{{ $section.RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    {{ end }}
+    {{ if .Params.Excerpt }}<p class="f6 lh-copy">{{ .Params.Excerpt | markdownify }}{{ else }}{{ .Summary | markdownify }}</p>{{ end }}
+    <!--ensures section Params are respected-->
+    {{ if $root.Params.show_author_byline }}<p class="f7 db mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>{{ end }}
+    {{ if $root.Params.show_post_date }}<p class="f7 db mv1">{{ .PublishDate.Format "January 2, 2006" }}</p>{{ end }}
+  </div>
+</article>

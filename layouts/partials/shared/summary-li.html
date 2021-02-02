@@ -1,0 +1,62 @@
+<section class="featured-content">
+{{ $page := . }} <!--save current page-->
+{{ $pages := where .Site.RegularPages "Type" "in" site.Params.mainSections }}
+{{ $grouped := $pages.GroupBy "Section" }}
+{{ range $grouped }}
+  {{ $section := $.Site.GetPage "section" .Key }}
+  {{ with $section }}
+    <h5 class="f4 fw7 tracked ttu lh-title mb0 bt pv3"><a href="{{ .RelPermalink }}" class="dim no-underline">{{ .Title }}</a></h5>
+  {{ else }}
+  <!-- If no _index.md is available, ".Key" defaults to the section title and filters to title casing -->
+    <h5 class="f4 fw7 tracked ttu lh-title mb0 bt pv3"><a href="{{ .RelPermalink }}" class="dim no-underline">{{ .Key | title }}</a></h5>
+  {{ end }}
+
+  <!--now add the featured content-->
+  {{ $number_featured := $page.Params.number_featured | default 2 }}
+  {{ range first $number_featured .Pages.ByDate.Reverse }}
+  <article>
+    <h4 class="f4 mt4 lh-title"><a href="{{ .RelPermalink }}" class="dim no-underline">{{ .Title }}</a></h4>
+      <div class="flex flex-column flex-row-ns mb4 mb5-l items-center">
+        <div class="flex flex-column w-25-ns">
+          <figure class="mr3">
+            <!--featured image for the branch bundle-->
+            {{ $branch := (.CurrentSection.Resources.ByType "image").GetMatch "*feature*" }}
+            <!--featured image for the leaf bundle-->
+            {{ $leaf := (.Resources.ByType "image").GetMatch "*feature*" }}
+            {{ $thumbnail := $leaf | default $branch }}
+            <a href="{{ .RelPermalink }}">
+              {{ with $thumbnail }}
+              <img src="{{ .RelPermalink | absURL }}" align="left" class="mw-100 w4 db">
+            {{ end }}
+            </a>
+          </figure>
+        </div>
+        
+        {{ if .Params.excerpt }}
+        <div class="flex flex-column w-two-thirds-ns pl3-ns">
+          <p class="measure lh-copy cf">
+            {{ .Params.excerpt }}
+            <a href="{{ .RelPermalink }}">Read more</a>
+          </p>
+        </div>
+        {{ end }}
+    </article>
+  {{ end }} <!--end range across grouped pages-->
+  
+  {{ with $section }}
+      <div class="tr">
+        <span class="f5 pv4 tr ttu tracked"><a href="{{ .RelPermalink }}" class="dim no-underline">See all &rarr;</a></span>
+      </div>
+  {{ end }}
+{{ end }} 
+
+{{ $number_categories := $page.Params.number_categories | default 0 }}
+{{ if ge $number_categories 1 }}
+  <article{{ if .Params.show_outro }} class="bb pb5"{{ end }}>
+  <h5 class="f4 mv4 ttu tracked lh-title bt pv3">Featured categories</h5>
+  {{ range first $number_categories site.Taxonomies.categories.ByCount }}
+      <a class="f6 link dim ba ph3 pv2 mb2 dib mr2" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} ({{ .Count }})</a> 
+  {{ end }}
+  </article>
+{{ end }}
+</section>

@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ $caller := . }}
+<main class="page-main pa4 {{ .Kind }}" role="main">
+  <section class="blog-content mw7 center">
+    {{ $paginator := .Paginate (where .RegularPagesRecursive "Type" "blog").ByDate.Reverse }}
+      {{ range $paginator.Pages }}
+        {{ .Scratch.Set "$root" $caller }}
+        {{ partial "shared/summary" . }}
+      {{ end }}
+    {{ partial "shared/list-pagination.html" . }}
+  </section>
+</main>
+<aside class="page-sidebar" role="complementary">
+  {{ partial "shared/sidebar-scaffold.html" . }}
+</aside>
+{{ end }}

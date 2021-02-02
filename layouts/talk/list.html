@@ -1,0 +1,24 @@
+{{ define "main" }}
+<main class="page-main pa4" role="main">
+  <section class="blog-intro mw7 center mb5">
+    <h2 class="f2 f1-ns lh-solid tc center fw4">{{ .Title | markdownify }}</h2>
+    {{ with .Description }}<p class="f6 f5-ns measure lh-copy tc center">{{ . | markdownify }}</p>{{ end }}
+    {{ if .Params.show_author_byline }}<p class="f7 measure lh-copy tc center i">{{ if .Params.author }}Written by {{ .Params.author }}{{ end }}</p>{{ end }}
+  </section>
+  <section class="blog-content mw7 center">
+    {{ $caller := . }}
+    {{ $paginator := .Paginate ((where .RegularPages "Type" .Section).GroupByDate "2006") }}
+    {{ range $paginator.PageGroups}}
+    <!--each year starts a new section-->
+    <section class="group-content pb3 pb4-ns bt">
+      <h5 class="f4 fw7 tracked ttu lh-title mv3">{{ .Key | title }}</h5>
+      {{ range .Pages }}
+          {{ .Scratch.Set "$root" $caller }}
+          {{ partial "shared/summary-compact.html" . }}
+      {{ end }}
+    </section>    
+    {{ end }}
+    {{ partial "shared/list-pagination.html" . }}
+  </section>
+</main>
+{{ end }}

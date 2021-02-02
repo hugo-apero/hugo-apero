@@ -1,0 +1,38 @@
+// ------------------------------
+// DO NOT EDIT BELOW THIS LINE
+
+// create custom color classes based on tachyons prefix when needed
+.bg-custom-site-bg-color { background-color: $siteBgColorCustom; }
+.bg-custom-sidebar-bg-color { background-color: $sidebarBgColorCustom; }
+.custom-text-color { color: $textColorCustom; }
+.custom-sidebar-text-color { color: $sidebarTextColorCustom; }
+.custom-headline-color { color: $headlineColorCustom; }
+.custom-heading-color { color: $headingColorCustom; }
+.custom-body-link-color { color: $bodyLinkColorCustom; }
+.custom-nav-link-color { color: $navLinkColorCustom; }
+.bg-custom-nav-bg-color { background-color: $navLinkColorCustom; }
+.custom-sidebar-link-color { color: $sidebarLinkColorCustom; }
+.custom-footer-text-color { color: $footerTextColorCustom; }
+.custom-button-text-color { color: $buttonTextColorCustom; }
+.hover-custom-button-hover-text-color:hover { color: $buttonHoverTextColorCustom; }
+.bg-custom-button-bg-color { background-color: $buttonBgColorCustom; }
+.hover-bg-custom-button-hover-bg-color:hover { background-color: $buttonHoverBgColorCustom; }
+.b--custom-border-color { border-color: $borderColorCustom; }
+
+// override variables used in main with new custom class slugs
+$siteBgColor: custom-site-bg-color;
+$sidebarBgColor: custom-sidebar-bg-color;
+$textColor: custom-text-color;
+$sidebarTextColor: custom-sidebar-text-color;
+$headlineColor: custom-headline-color;
+$headingColor: custom-heading-color;
+$bodyLinkColor: custom-body-link-color;
+$navLinkColor: custom-nav-link-color;
+$navBgColor: custom-nav-bg-color;
+$sidebarLinkColor: custom-sidebar-link-color;
+$footerTextColor: custom-footer-text-color;
+$buttonTextColor: custom-button-text-color;
+$buttonHoverTextColor: custom-button-hover-text-color;
+$buttonBgColor: custom-button-bg-color;
+$buttonHoverBgColor: custom-button-hover-bg-color;
+$borderColor: custom-border-color;

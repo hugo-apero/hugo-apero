@@ -1,0 +1,532 @@
+// variables based on tachyons classes
+// set font family options from config with defaults
+$textFontFamily: {{ site.Params.textFontFamily | default "sans-serif" }};
+$headingFontFamily: {{ site.Params.headingFontFamily | default "sans-serif" }};
+
+// use custom fonts
+$customtextFontFamily: {{ site.Params.customtextFontFamily | default site.Params.textFontFamily }};
+$customheadingFontFamily: {{ site.Params.customheadingFontFamily | default site.Params.headingFontFamily }};
+@import 'custom-fonts';
+
+// base color scheme
+@import 'base';
+
+// custom color themes
+// one of: forest / grayscale / peach / plum / poppy / sky / violet / water 
+// precedence: Params.theme > .Params.custom_colors 
+// custom colors may either be named tachyons color or hex codes
+{{ $themes := (slice "forest" "grayscale" "peach" "plum" "poppy" "sky" "violet" "water") }}
+{{ if site.Params.theme }}
+  {{ if in $themes site.Params.theme }}
+    @import '{{ printf "theme/%s" site.Params.theme }}';
+    @import 'theme/set-theme';
+  {{ else }}
+    {{ errorf "Selected theme '%s' is not one of the options." site.Params.theme }}
+  {{ end }}
+{{ else if site.Params.custom_theme }}
+  {{ $custom_file := (printf "%s/%s" "assets" site.Params.custom_theme ) }}
+  // detect if hex in user-provided filename
+  {{ $hex_colors := in site.Params.custom_theme "hex" }}
+  // detect if user-provided filename exists in assets
+  {{ if (fileExists (printf "%s.%s" $custom_file "scss")) -}}
+    {{ if not $hex_colors }}
+      // named colors can just be used
+      @import '{{ site.Params.custom_theme }}';
+    {{ else }}
+      // hex colors need set-theme too
+      @import '{{ site.Params.custom_theme }}';
+      @import 'theme/set-theme';
+    {{ end }}
+  {{ else }}
+    {{ errorf "Could not find custom color theme named '%s' in assets/ folder." site.Params.custom_theme }}
+  {{ end }}
+{{ end }}
+
+// learn about Tachyons http://tachyons.io
+@import 'tachyons';
+
+// learn about headroom.js https://wicky.nillia.ms/headroom.js/
+@import 'headroom';
+
+// add support for panelset from xaringanExtra package
+// written by Garrick Aden-Buie
+@import 'panelset';
+
+// apply tachyons font family and color options from config
+body {
+  @extend .bg-#{$siteBgColor}, .#{$textFontFamily}, .#{$textColor};
+}
+h1, h2, h3, h4, h5, h6 {
+  @extend .#{$headingFontFamily}, .#{$headingColor};
+}
+.f-headline,
+.f-subheadline {
+  @extend .#{$headlineColor} ;
+
+  &-ns, &-m, &-l {
+    @extend .#{$headlineColor} ;
+  }
+}
+.site-brand,
+.site-links a,
+.site-header .social-icon-links a,
+.site-footer .social-icon-links a,
+.page-main a.link {
+  @extend .#{$navLinkColor};
+}
+.page-main a:not(.link),
+.page-main .social-icon-links a {
+  @extend .#{$bodyLinkColor};
+}
+.page-sidebar {
+  @extend .bg-#{$sidebarBgColor}, .#{$sidebarTextColor};
+}
+.page-sidebar a:not(.link) {
+  @extend .#{$sidebarLinkColor};
+}
+.site-footer {
+  @extend .#{$footerTextColor};
+}
+
+// apply tachyons classes to blog post and single page markdown
+.post-body,
+.page-body {
+
+  h1, h2, h3, h4, h5, h6 { @extend .lh-title ; }
+  h1 { @extend .f1 ; }
+  h2 { @extend .f2 ; }
+  h3 { @extend .f3 ; }
+  h4 { @extend .f4 ; }
+  h5 { @extend .f5 ; }
+  h6 { @extend .f6 ; }
+
+  > p { @extend .lh-copy ; }
+
+  > p > code {
+    @extend .f6, .ph1, .bg-white-50 ;
+  }
+
+  blockquote {
+    @extend .ml0, .pl3, .bl, .bw2, .measure-wide, .b--#{$borderColor} ;
+
+    p, cite { @extend .lh-copy ; }
+    cite { @extend .f6, .i ; }
+  }
+
+  ul:not(.panel-tabs), ol, dl { @extend .measure-wide, .lh-copy ; }
+  > dl dt { @extend .pl3, .b, .mb2 ; }
+
+  hr { @extend .mv4, .ba, .b--#{$borderColor} ; }
+
+  > table {
+    @extend .collapse, .mv4, .w-100, .ba, .bw1, .b--#{$borderColor} ;
+
+    tbody tr { @extend .stripe-dark ; }
+    th { @extend .pa3, .f7, .fw7, .ttu, .tl, .v-btm ; }
+    td { @extend .pa3, .f6, .v-top ; }
+  }
+
+  > .footnotes {
+    @extend .f7 ;
+
+    ol { @extend .mw-100 ; }
+  }
+
+  details {
+    @extend .mt4 ;
+  }
+}
+
+// apply tachyons classes to blog lists 
+.blog-content {
+  article { @extend .b--#{$borderColor} ; }
+ .group-content { @extend .b--#{$borderColor} ; }
+}
+.list-sidebar {
+  article:first-of-type {
+    @extend .mt4-l ;
+  }
+}
+
+// make the ad unit sticky and pad details
+.page-sidebar {
+  .ad-unit {
+    @extend .bg-#{$sidebarBgColor}, .top-0;
+    position: -webkit-sticky;
+    position: sticky;
+  }
+  details {
+    @extend .ph4, .mv4 ;
+  }
+}
+
+// SHORTCODES
+// apply tachyons classes to highlight shortcode (and markdown codefence)
+.highlight { @extend .f6, .lh-copy ; }
+
+// apply tachyons classes to figure shortcode
+figure {
+  @extend .mr0, .ml0 ;
+
+  figcaption p,
+  figcaption h4 {
+    @extend .f7 ;
+  }
+  figcaption p {
+    @extend .fw4, .mv1 ;
+  }
+}
+
+// FORMS
+form {
+  @extend .mb4 ;
+
+  legend {
+    @extend .ph0, .mh0, .fw6, .clip ;
+  }
+  fieldset {
+    @extend .f5, .measure-wide, .ba, .bw0, .b--transparent, .pa0, .mv3, .mh0 ;
+  }
+  label {
+    @extend .db, .f6, .lh-copy ;
+  }
+  select,
+  [type="text"],
+  [type="email"] {
+    @extend .input-reset, .pa3, .mt2, .mb3, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .w-100 ;
+  }
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    @extend .input-reset, .ph4, .pv3, .mb3, .f6, .ttu, .tracked, .b, .bw1, .br0, .b--transparent, .link, .pointer, .bg-animate, .#{$buttonTextColor}, .hover-#{$buttonHoverTextColor}, .bg-#{$buttonBgColor}, .hover-bg-#{$buttonHoverBgColor} ;
+  }
+  input[type="radio"],
+  input[type="checkbox"] {
+    @extend .mv2, .mh1 ;
+  }
+  textarea {
+    @extend .input-reset, .pa3, .mt2, .mb3, .mh0, .lh-copy, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .w-100 ;
+  }
+  select:focus,
+  textarea:focus,
+  [type="text"]:focus,
+  [type="email"]:focus {
+    @extend .bg-white-50 ;
+  }
+}
+
+// home page action jackson
+.home {
+  .action.button {
+    @extend .input-reset, .ph4, .pv3, .mb3, .f6, .ttu, .tracked, .b, .bw1, .br0, .link, .pointer, .bg-animate, .b--transparent, .#{$headlineColor}, .bg-#{$sidebarBgColor}, .hover-bg-#{$buttonHoverBgColor} ;
+  }
+  a.action.button:hover {
+  @extend .#{$buttonTextColor};
+  }
+  .action.text {
+    @extend .db, .mb4, .ttu, .tracked, .b, .link ;
+  }
+}
+
+// CSS GRID SCAFFOLD
+.grid-container {
+  @extend .w-100 ;
+
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: dense;
+  grid-gap: 0px;
+  margin: 0px auto;
+  max-width: 1440px;
+}
+.site-header {
+  grid-column: 1 / 7;
+}
+.page-main {
+  grid-column: 1 / 7;
+}
+.site-footer {
+  grid-column: 1 / 7;
+}
+
+.list-sidebar {
+  .page-main {
+    grid-column: 3 / 7;
+  }
+  .page-sidebar {
+    grid-column: 1 / 3;
+  }
+}
+.single-sidebar {
+  .page-main {
+    grid-column: 1 / 5;
+  }
+  .page-sidebar {
+    grid-column: 5 / 7;
+  }
+}
+.single-series {
+  .page-sidebar {
+    grid-column: 1 / 3;
+  }
+  .page-main {
+    grid-column: 3 / 7;
+  }
+
+}
+
+// SCAFFOLD MEDIA QUERY
+@media screen and (max-width: 768px) {
+  .site-header {
+    order: 1;
+  }
+  .page-main {
+    order: 2;
+  }
+  .page-sidebar {
+    order: 3;
+  }
+  .site-footer {
+    order: 4;
+  }
+  .list-sidebar {
+    .page-main,
+    .page-sidebar {
+      grid-column: 1 / 7;
+    }
+    .page-main {
+      order: 3;
+    }
+    .page-sidebar {
+      order: 2;
+    }
+  }
+  .single-sidebar {
+    .page-main,
+    .page-sidebar {
+      grid-column: 1 / 7;
+    }
+  }
+  .single-series {
+    .page-main,
+    .page-sidebar {
+      grid-column: 1 / 7;
+    }
+    .page-main {
+      order: 3;
+    }
+    .page-sidebar {
+      order: 2;
+    }
+  }
+}
+
+// anchor links
+a > svg.anchor-symbol {
+  color: transparent;
+  margin-left: .5rem;
+  fill: $black-40;
+  height: 22px;
+}
+
+a > svg.anchor-symbol:hover {
+  fill: $black-60;
+  transition: fill 0.3s ease;
+}
+
+/*----NAV LINK HOVER ANIMATION -----*/
+/* from Desiree: https://github.com/dcossyleon/blogdown_desiree/blob/master/assets/scss/custom.scss */
+
+/* stroke */
+
+.site-links a,
+.site-links a:after,
+.site-links a:before {
+  transition: all .5s;
+}
+
+.site-links a {
+  position: relative;
+}
+
+.site-links a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.'; /* make invisible, dot beneath links */
+  color: transparent;
+  height: .08em;
+  pointer-events: none;
+  @extend .bg-#{$navBgColor};
+}
+
+.site-links a:hover:after {
+  width: 85%;
+}
+
+.site-links a.active:after {
+  width: 85%;  
+  color: transparent;
+  @extend .bg-#{$navBgColor};
+  height: .08em;
+}
+
+// TOCs
+
+// Position page and series TOC
+
+nav#TableOfContents ul,
+nav#SeriesTableOfContents ul,
+nav#SectionTableOfContents ul {
+  @extend .list, .pa0;
+}
+
+nav#TableOfContents ul li,
+nav#SeriesTableOfContents ul li,
+nav#SectionTableOfContents ul li {
+  @extend .lh-copy, .pl2, .pv1;
+}
+
+details#PageTableOfContents {
+  @extend .mt3, .pl2, .pr0, .ml0, .mr2, .w-50, .dn, .db-l;
+  summary {
+    @extend .mb3, .f5, .fw7, .pl2, .ttu, .tracked, .#{$sidebarLinkColor};
+  }
+}
+
+// stickies should make room for headroom to peek down
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  @extend .static-l, .top-0-l, .pt5;
+}
+
+.about-sidebar {
+  @extend .self-start, .sticky, .bg-#{$sidebarBgColor}, .#{$sidebarTextColor};
+}
+.about-sidebar a:not(.link) {
+  @extend .#{$sidebarLinkColor};
+}
+
+@media screen and (max-width: 768px) {
+  .about-sidebar {
+    order: 1;
+  }
+}
+
+audio {
+  filter: sepia(0%) saturate(0%) grayscale(1) contrast(99%) invert(100%);
+  width: 8rem;
+  height: 2rem;
+}
+.controls button:hover, 
+.controls button:focus {
+  @extend .o-10;
+}
+
+// apply tachyons classes to about page lists and collections
+.featured-content h5,
+.featured-content article,
+.post-header h2 {
+  @extend .b--#{$borderColor} ; 
+}
+
+// button links in single page headers + listing page footers
+.post-header a.btn-links,
+article footer a.btn-links {
+    @extend .fw4, .ph3, .pv2, .mb3, .f6, .ttu, .tracked, .b, .br0, .link, .pointer, .bg-animate, .#{$headingColor}, .hover-#{$buttonHoverTextColor}, .bg-transparent, .hover-bg-#{$buttonHoverBgColor};
+}
+
+// dividers for talks
+.middot-divider::after {
+	content: '\00B7';
+	@extend .mh1, .#{$headingColor};
+}
+
+// Responsive table to hold event details
+
+.event-details {
+  .first-column {
+    @extend .fl, .w-100, .pv2, .w-25-ns;
+    .row-label {
+      @extend .f-subheadline, .f5, .fw2, .ttu, .tracked, .pa0, .ma0, .lh-copy;
+    }
+  }
+  .second-column {
+    @extend .fl, .w-100, .pv2, .w-75-ns;
+    .row-details {
+      @extend .f5, .measure, .lh-copy, .mv0;
+    }
+  }
+}
+
+// Series + collections table of contents
+
+details#PageTableOfContents nav#TableOfContents ul li:hover {
+  @extend .bg-#{$siteBgColor};
+}
+
+nav#SectionTableOfContents ul li,
+nav#SeriesTableOfContents ul li {
+  @extend .pl2, .bl, .bw1, .b--transparent;
+  &.active {
+    @extend .pl3, .bg-#{$siteBgColor}, .bl, .b--#{$borderColor}, .bw1;
+  }
+  &:not(.active) {
+    @extend .pl3, .dim, .bl, .bw1, .b--transparent;
+  }
+  &:hover:not(.active) a {
+    @extend .#{$headlineColor}, .b--#{$borderColor};
+  }
+}
+
+nav#SectionTableOfContents ul details {
+  @extend .pv1, .mv0, .pr0;
+  padding-left: 1.25rem;
+  &.active {
+    @extend .b--#{$borderColor}, .bl, .bw1, .pl3;
+  }
+  summary { 
+    @extend .#{$sidebarLinkColor}, .pb2; 
+  }
+  li { 
+    @extend .pl0; 
+    &.active {
+      @extend .pl3, .bg-#{$siteBgColor}, .bl, .b--transparent, .bw1;
+    }
+  }
+}
+
+.list-sidebar ul li::marker,
+.list ul li::marker{
+  @extend .#{$headingColor}, .f5;
+}
+
+// Style code
+pre {
+  @extend .pre, .br1, .pa3, .bg-transparent;
+  border: 1px solid #ebebeb;
+}
+
+pre code span {
+	font-weight: normal !important;
+}
+
+html, body {
+  scroll-padding-top: 73px;
+}
+
+
+// Fontawesome icons
+$fa-font-path:        "../webfonts";
+@import "fontawesome-free-5.15.1-web/scss/fontawesome.scss";
+@import "fontawesome-free-5.15.1-web/scss/solid.scss";
+@import "fontawesome-free-5.15.1-web/scss/regular.scss";
+@import "fontawesome-free-5.15.1-web/scss/brands.scss";
+
+// import a custom css file in assets
+@import "custom";

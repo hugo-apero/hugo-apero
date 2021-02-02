@@ -1,0 +1,20 @@
+{{ if not site.Params.utterances.use_utterances }}
+<div class="post-comments pa0 pa4-l mt4">
+{{ template "_internal/disqus.html" . }}
+</div>
+
+{{ else if site.Params.utterances.use_utterances }}
+<div class="post-comments pa0 pa4-l mt4">
+  {{ with site.Params.utterances }}
+  <script src="https://utteranc.es/client.js"
+          repo="{{ .repo_name }}"
+          issue-term="{{ .issue_term }}"
+          theme="{{ .theme }}"
+          label="{{ .label }}"
+          crossorigin="anonymous"
+          async
+          type="text/javascript">
+  </script>
+  {{ end }}
+</div>
+{{ end }}

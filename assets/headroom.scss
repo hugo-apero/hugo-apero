@@ -1,0 +1,16 @@
+.headroom {
+  will-change: transform;
+  transition: transform 200ms linear;
+  @extend .bg-#{$siteBgColor};
+  opacity: 0.9;
+}
+.headroom--pinned {
+  transform: translateY(0%);
+}
+.headroom--unpinned {
+  transform: translateY(-100%);
+}
+.header--fixed {
+  position: sticky;
+  top: 0;
+}

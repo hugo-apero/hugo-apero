@@ -1,0 +1,74 @@
+{{ $permalink := .Permalink }}
+{{ $page := . }}                           <!--save current page-->
+{{ $section := $page.CurrentSection }}     <!--save branch section-->
+
+<!--meta tags-->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{{ hugo.Generator }}
+<title>{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Page.Title }} | {{ site.Title }}{{ end }}</title>
+
+{{ with site.Params.twitter }}
+<meta property="twitter:site" content="@{{ . }}">
+<meta property="twitter:creator" content="@{{ . }}">
+{{ end }}
+
+<!--default sharing image-->
+{{- $site_card := printf "%s" site.Params.sharing_image | absURL }}
+
+<!--descriptions-->
+{{ $desc := "" }}
+{{/* Generate page description. */}}
+  {{ if .Params.description }}
+    {{ $desc = .Params.description }}
+  {{ else if .Params.subtitle }}
+    {{ $desc = .Params.subtitle }}
+  {{ else if .Params.excerpt }}
+    {{ $desc = .Params.excerpt }}
+  {{ else }}
+    {{ $desc = site.Params.description  }}
+  {{ end }}
+<meta name="description" content="{{ $desc }}">
+
+<!--opengraph tags-->
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ .Title }}{{ else }}{{ .Page.Title }} | {{ site.Title }}{{ end }}">
+<meta property="og:description" content="{{ $desc }}" />
+<meta property="og:type" content="{{ if .IsPage }}page{{ else }}website{{ end }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:locale" content="{{ site.LanguageCode | default "en-us" }}">
+
+<!--sharing images-->
+<!--adapted from: https://github.com/kaushalmodi/hugo-bare-min-theme/blob/6195b5e377c56791ba4067ac0ec5286bf336aedf/layouts/partials/twitter_cards.html-->
+{{/* If images are specified as list variable in section front matter. */}}
+{{- with $.Params.images -}}
+    <meta name="twitter:card" content="summary_large_image"/>
+    {{- $image := (index . 0) -}}
+    {{- $image_link_absolute := (findRE "^/" $image) -}}
+    {{- if $image_link_absolute -}}
+        <meta name="twitter:image" content="{{- $image | absURL -}}"/>
+    {{- else -}}
+        <meta name="twitter:image" content="{{- (printf "%s%s" $permalink $image) -}}"/>
+    {{- end -}}
+<!--using featured images-->
+{{ else -}}
+    <!--featured image for the leaf bundle-->
+    {{- $images := $page.Resources.ByType "image" -}}
+    {{ $leaf := $images.GetMatch "*feature*" }}
+    {{- $hex := $images.GetMatch "*hex*" -}}
+    {{- $card := cond (ne $hex nil) $hex $leaf -}}
+    <!--sidebar image for the branch bundle-->
+    {{ $branch := ($section.Resources.ByType "image").GetMatch "*sidebar*" }}
+    {{- $card := cond (ne $card nil) $card $branch -}}
+    {{ with $card }}
+        <meta property="og:image" content="{{ .Permalink }}" >
+        <meta property="twitter:card" content="{{ if (ne $hex nil) }}summary{{ else }}summary_large_image{{ end }}">
+        <meta name="twitter:image" content="{{ .Permalink }}" >
+    <!--if no featured, use the site card-->
+    {{ else }}
+        <meta property="og:image" content="{{ $site_card }}" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="{{ $site_card }}" >
+    {{ end }}
+{{- end -}}

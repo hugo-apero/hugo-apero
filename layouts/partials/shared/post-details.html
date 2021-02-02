@@ -1,0 +1,34 @@
+<details {{ .Scratch.Get "details" }} class="f6 fw7 input-reset">
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Posted on:</dt>
+    <dd class="fw5 ml0">{{ .PublishDate.Format "January 2, 2006" }}</dd>
+  </dl>
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Length:</dt>
+    <dd class="fw5 ml0">{{ .ReadingTime }} minute read, {{ .WordCount }} words</dd>
+  </dl>
+  {{ with .Params.categories }}
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Categories:</dt>
+    <dd class="fw5 ml0">{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}</dd>
+  </dl>
+  {{ end }}
+  {{ with .Params.series }}
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Series:</dt>
+    <dd class="fw5 ml0">{{ range . }} <a href="{{ "series/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}</dd>
+  </dl>
+  {{ end }}
+  {{ with .Params.tags }}
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Tags:</dt>
+    <dd class="fw5 ml0">{{ range . }} <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}</dd>
+  </dl>
+  {{ end }}
+  <dl class="f6 lh-copy">
+    <dt class="fw7">See Also:</dt>
+    {{ range first 3 ( where ( where .Site.Pages.ByDate.Reverse ".Params.tags" "intersect" .Params.tags ) "Permalink" "!=" .Permalink ) }}
+    <dd class="fw5 ml0"><a href="{{ .RelPermalink }}">{{ .Title }}</a></dd>
+    {{ end }}
+  </dl>
+</details>

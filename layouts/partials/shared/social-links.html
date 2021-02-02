@@ -1,0 +1,21 @@
+<div class="social-icon-links" aria-hidden="true">
+  <!-- Font awesome icons -->
+  {{ range site.Params.social }}
+    {{ $pack := or .icon_pack "fas" }}
+    {{ $pack_prefix := $pack }}
+    {{ if in (slice "fab" "fas" "far" "fal") $pack }}
+      {{ $pack_prefix = "fa" }}
+    {{ end }}
+    {{ $link := .url }}
+    {{ $scheme := (urls.Parse $link).Scheme }}
+    {{ $target := "" }}
+    {{ if not $scheme }}
+      {{ $link = .url | relLangURL }}
+    {{ else if in (slice "http" "https") $scheme }}
+      {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
+    {{ end }}
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="{{ $link | safeURL }}" title="{{ .icon }}" {{ $target | safeHTMLAttr }}>
+      <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} fa-lg fa-fw"></i>
+    </a>
+  {{ end }}
+</div>

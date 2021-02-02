@@ -1,0 +1,10 @@
+<div class="post-pagination dt w-100 mt4 mb2">
+  {{ with .PrevInSection }}
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="{{.Permalink}}">&larr; {{.Title}}</a>
+  {{ end }}
+  {{ with .NextInSection }}
+    <a class="next dtc pl2 tr v-top fw6"
+    href="{{.Permalink}}">{{.Title}} &rarr;</a>
+  {{ end }}
+</div>

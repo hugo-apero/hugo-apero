@@ -1,0 +1,5 @@
+<div class="panel">
+  <div class="panel-name">{{ .Get "name" | markdownify | emojify }}</div>
+  <!-- Panel content -->
+  {{ with .Inner }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+</div>

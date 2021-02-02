@@ -1,0 +1,15 @@
+{{ $page := . }}                       <!--save current page-->
+{{ $section := $page.CurrentSection }} <!--save current section-->
+
+<!--featured sidebar image for the branch bundle-->
+{{ $branch := ($section.Resources.ByType "image").GetMatch "*sidebar*" }}
+<!--featured sidebar image for the leaf bundle-->
+{{ $leaf := ($page.Resources.ByType "image").GetMatch "*sidebar*" }}
+<!--use leaf sidebar, if exists; if not, use branch sidebar-->
+{{ $thumbnail := $leaf | default $branch }}
+<!--if neither, use first section sidebar-->
+{{ $first := (.FirstSection.Resources.ByType "image").GetMatch "*sidebar*" }}
+{{ $thumbnail := cond (eq $thumbnail nil) $first $thumbnail }}
+{{ with $thumbnail }}
+  <img src="{{ .RelPermalink | relURL }}" class="db ma0">
+{{ end }}

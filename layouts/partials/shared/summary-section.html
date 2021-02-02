@@ -1,0 +1,73 @@
+{{ $page := . }}                           <!--save current page-->
+{{ $section := $page.CurrentSection }}     <!--save branch section-->
+{{ $root := .Scratch.Get "$root" }}     <!--save root section-->
+<article class="mv4 mv5-l bb">
+  <!--if show_post_thumbnail is TRUE in root-->
+  {{ if $root.Params.show_post_thumbnail }}
+  <!--featured image for the leaf bundle-->
+  {{- $images := $page.Resources.ByType "image" -}}
+  {{ $leaf := $images.GetMatch "*feature*" }}
+  {{- $hex := $images.GetMatch "*hex*" -}}
+  {{- $thumbnail := cond (ne $hex nil) $hex $leaf -}}
+  <!--sidebar image for the branch bundle-->
+  {{ $branch := ($section.Resources.ByType "image").GetMatch "*feature*" }}
+  {{- $thumbnail := cond (ne $thumbnail nil) $thumbnail $branch -}}
+  <div class="flex flex-column flex-row-ns mb4 mb5-l {{ if (ne $hex nil) }}items-center{{ end }}">
+    <figure class="mr4-ns ma0 mb2 mb0-l w-100 w-30-ns">
+      <a href="{{ .RelPermalink }}" class="db">
+        {{ with $thumbnail }}
+          <img src="{{ .RelPermalink | absURL }}" class="db ma0 dim" alt="">
+        {{ end }}
+      </a>
+    </figure>
+    <div class="flex flex-column w-100 w-60-ns pl3-ns">
+      <header class="w-100">
+        <h1 class="f3 mv2 lh-title underline"><a href="{{ .RelPermalink }}" class="db">{{ .Title | markdownify }}</a></h1>
+        {{ range first 1 (.GetTerms "series") }}
+        <h2 class="f5"><i class="fas fa-stream fa-fw pr1"></i><small class="f5 ttu tracked">Series: </small><a class="link i dim" href="{{ $section.RelPermalink }}">{{ .LinkTitle }}</a></h2>
+        {{ end }}
+      </header>
+      {{ with .Params.excerpt }}<p class="f6 lh-copy mv2 flex-auto">{{ . | markdownify }}</p>{{ end }}
+      {{ if .Pages }}
+      <!-- Ranges through content/posts/*.md -->
+      <h2 class="f5 ttu tracked mv2 pb0">In this section:</h2>
+      <ul class="pa0 ml3 mv0">
+      {{ range .RegularPages.ByWeight }}
+        <li class="pl2"><p class="lh-solid measure-wide"><a class="" href="{{ .Permalink }}">{{ .Title }}</a>{{ with .Params.subtitle }}: {{ . | markdownify }}{{ end }}</p></li>
+      {{ end }}
+      </ul>
+      {{ end }}
+      <footer class="w-100">
+      <!--ensures section Params are respected-->
+      {{ if $root.Params.show_author_byline }}<p class="f7 db mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>{{ end }}
+      {{ if $root.Params.show_post_date }}<p class="f7 db mv1">{{ .PublishDate.Format "January 2, 2006" }}</p>{{ end }}
+    </footer>
+    </div>
+  </div>
+  
+  <!--if show_post_thumbnail is FALSE in root-->
+  {{ else }}
+  <div class="measure-wide center mb4 mb5-l">
+    <header>
+      <h1 class="f3 mt0 mb2 lh-title underline fw4"><a href="{{ .RelPermalink }}" class="db">{{ .Title | markdownify }}</a></h1>
+      {{ range first 1 (.GetTerms "series") }}
+      <h2 class="f5"><i class="fas fa-stream fa-fw pr1"></i><small class="f5 ttu tracked">Series: </small><a class="link i dim" href="{{ $section.RelPermalink }}">{{ .LinkTitle }}</a></h2>
+      {{ end }}
+    </header>
+      {{ with .Params.excerpt }}<p class="f6 lh-copy mv2 flex-auto">{{ . | markdownify }}</p>{{ end }}
+      {{ if .Pages }}
+      <!-- Ranges through content/posts/*.md -->
+      <h2 class="f5 ttu tracked mv2 pb0">In this section:</h2>
+      <ul class="pa0 ml3 mv0">
+      {{ range .RegularPages.ByWeight }}
+        <li class="pl2"><p class="lh-solid measure-wide"><a class="" href="{{ .Permalink }}">{{ .Title }}</a>{{ with .Params.subtitle }}: {{ . | markdownify }}{{ end }}</p></li>
+      {{ end }}
+      </ul>
+      {{ end }}
+    <footer>
+      {{ if $root.Params.show_author_byline }}<p class="f7 db mv2">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>{{ end }}
+      {{ if $root.Params.show_post_date }}<p class="f7 db mv2">{{ .PublishDate.Format "January 2, 2006" }}</p>{{ end }}
+    </footer>
+  </div>
+  {{ end }}
+</article>
