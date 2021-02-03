@@ -4,7 +4,7 @@
   font-style: normal;
   font-weight: 400;
   src: local(''),
-       url('/fonts/Fraunces9ptSoft-Thin.woff2') format('woff2');
+       url('#{$font-path}/Fraunces9ptSoft-Thin.woff2') format('woff2');
 }
 
 /* fraunces-italic - latin */
@@ -13,7 +13,7 @@
   font-style: italic;
   font-weight: 400;
   src: local(''),
-       url('/fonts/Fraunces9ptSoft-ThinItalic.woff2')  format('woff2');
+       url('#{$font-path}/Fraunces9ptSoft-ThinItalic.woff2')  format('woff2');
 }
 
 /* Metropolis-regular - latin */
@@ -22,8 +22,8 @@
   font-style: normal;
   font-weight: 400;
   src: local(''),
-       url('/fonts/Metropolis-Light.woff2') format('woff2'),
-       url('/fonts/Metropolis-Light.woff') format('woff');
+       url('#{$font-path}/Metropolis-Light.woff2') format('woff2'),
+       url('#{$font-path}/Metropolis-Light.woff') format('woff');
 }
 
 /* Metropolis-italic - latin */
@@ -32,8 +32,8 @@
   font-style: italic;
   font-weight: 400;
   src: local(''),
-       url('/fonts/Metropolis-LightItalic.woff2')  format('woff2'),
-       url('/fonts/Metropolis-LightItalic.woff')  format('woff');
+       url('#{$font-path}/Metropolis-LightItalic.woff2')  format('woff2'),
+       url('#{$font-path}/Metropolis-LightItalic.woff')  format('woff');
 }
 
 /* bitter-300 - latin */
@@ -63,7 +63,7 @@
   font-style: normal;
   font-weight: 400;
   src: local(''),
-       url('/fonts/Commissioner-Light.woff2') format('woff2');
+       url('#{$font-path}/Commissioner-Light.woff2') format('woff2');
 }
 
 /* commissioner-italic - latin */
@@ -72,7 +72,7 @@
   font-style: italic;
   font-weight: 400;
   src: local(''),
-       url('/fonts/Commissioner-LightItalic.woff2') format('woff2');
+       url('#{$font-path}/Commissioner-LightItalic.woff2') format('woff2');
 }
 
 /* eb-garamond-regular - latin */
