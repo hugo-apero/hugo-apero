@@ -11,5 +11,5 @@
 {{ $first := (.FirstSection.Resources.ByType "image").GetMatch "*sidebar*" }}
 {{ $thumbnail := cond (eq $thumbnail nil) $first $thumbnail }}
 {{ with $thumbnail }}
-  <img src="{{ .RelPermalink | relURL }}" class="db ma0">
+  <img src="{{ .RelPermalink }}" class="db ma0">
 {{ end }}
