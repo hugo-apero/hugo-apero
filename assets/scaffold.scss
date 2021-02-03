@@ -521,7 +521,6 @@ html, body {
   scroll-padding-top: 73px;
 }
 
-
 // Fontawesome icons
 $fa-font-path: '{{ "../webfonts" | absURL }}';
 @import "fontawesome-free-5.15.1-web/scss/fontawesome.scss";
