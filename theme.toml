@@ -1,0 +1,19 @@
+name = "Apéro"
+license = "CC-BY-4.0"
+licenselink = "https://github.com/hugo-apero/hugo-apero/blob/master/LICENSE.md"
+description = "A Hugo theme you'll want to hang out with."
+homepage = "https://hugo-apero.netlify.app"
+tags = ["blog", "personal", "portfolio", "responsive", "customizable"]
+features = ["blog", "projects", "talks", "events", "collections", "contact form"]
+min_version = "0.79.0"
+
+# If the theme has a single author
+[author]
+    name = "Alison Hill"
+    homepage = "https://alison.rbind.io"
+
+# If porting an existing theme
+[original]
+    author = "Formspree"
+    homepage = "https://blogophonic-hugo.netlify.app/"
+    repo = "https://github.com/formspree/blogophonic-hugo"
