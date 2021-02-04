@@ -6,6 +6,7 @@ $headingFontFamily: {{ site.Params.headingFontFamily | default "sans-serif" }};
 // use custom fonts
 $customtextFontFamily: {{ site.Params.customtextFontFamily | default site.Params.textFontFamily }};
 $customheadingFontFamily: {{ site.Params.customheadingFontFamily | default site.Params.headingFontFamily }};
+$font-path: '{{ "fonts" | absURL }}';
 @import 'custom-fonts';
 
 // base color scheme
@@ -520,9 +521,8 @@ html, body {
   scroll-padding-top: 73px;
 }
 
-
 // Fontawesome icons
-$fa-font-path:        "../webfonts";
+$fa-font-path: '{{ "webfonts" | absURL }}';
 @import "fontawesome-free-5.15.1-web/scss/fontawesome.scss";
 @import "fontawesome-free-5.15.1-web/scss/solid.scss";
 @import "fontawesome-free-5.15.1-web/scss/regular.scss";
