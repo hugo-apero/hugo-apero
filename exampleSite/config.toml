@@ -108,6 +108,7 @@ enableEmoji = true
   tag = "tags"
 
 [menu]
+  # Configure header 
   [[menu.header]]
     name = "About"
     title = "About Blogophonic"
@@ -138,6 +139,23 @@ enableEmoji = true
     title = "Element Page"
     url = "/elements/"
     weight = 6
+    
+  # Configure footer  
+  [[menu.footer]]
+    name = "License"
+    title = "License"
+    url = "/license/"
+    weight = 1
+  [[menu.footer]]
+    name = "Contact"
+    title = "Contact form"
+    url = "/contact/"
+    weight = 2
+  [[menu.footer]]
+    name = "Contributors"
+    title = "Contributors"
+    url = "/contributors/"
+    weight = 3
 
 # see https://gohugo.io/about/hugo-and-gdpr/    
 [privacy]
