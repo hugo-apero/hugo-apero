@@ -53,7 +53,7 @@
               {{ $avatar := printf "/%s%s" .File.Dir .Params.avatar }}
               {{ $avatar_shape := .Params.avatar_shape | default "circle" }}
               {{ with $avatar_shape }}
-                <img src="{{ $avatar }}" class="h4 w4 dib {{if eq . "rounded"}}br3{{end}}{{if eq . "circle"}}br-100{{end}}" alt="avatar">
+                <img src="{{ $avatar | relURL }}" class="h4 w4 dib {{if eq . "rounded"}}br3{{end}}{{if eq . "circle"}}br-100{{end}}" alt="avatar">
               {{ end }}
             {{ end }}
             <h2 class="f-subheadline f4-ns fw6">{{ .Params.author }}</h2>
