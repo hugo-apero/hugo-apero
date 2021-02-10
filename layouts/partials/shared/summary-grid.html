@@ -14,7 +14,7 @@
     <!--sidebar image for the branch bundle-->
     {{ $branch := ($section.Resources.ByType "image").GetMatch "*feature*" }}
     {{- $thumbnail := cond (ne $thumbnail nil) $thumbnail $branch -}}
-    <div class="aspect-ratio aspect-ratio--1x1 {{ if (ne $hex nil) }}contain{{ else }}cover{{ end }} dim"{{ with $thumbnail }}style="background: url('{{ .RelPermalink }}') center center no-repeat"{{ end }}><a href="{{ .RelPermalink }}" class="w-100 absolute top-0 bottom-0"></a></div>
+    <div class="aspect-ratio aspect-ratio--1x1 {{ if (ne $hex nil) }}contain{{ else }}cover{{ end }} dim"{{ with $thumbnail }}style="background: url('{{ .RelPermalink | relURL }}') center center no-repeat"{{ end }}><a href="{{ .RelPermalink }}" class="w-100 absolute top-0 bottom-0"></a></div>
   </div>
   {{ end }}
   <div class="ph0 pa2-m pa3-l">

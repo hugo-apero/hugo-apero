@@ -26,7 +26,7 @@
             {{ $thumbnail := $leaf | default $branch }}
             <a href="{{ .RelPermalink }}">
               {{ with $thumbnail }}
-              <img src="{{ .RelPermalink }}" align="left" class="mw-100 w4 db">
+              <img src="{{ .RelPermalink | relURL }}" align="left" class="mw-100 w4 db">
             {{ end }}
             </a>
           </figure>

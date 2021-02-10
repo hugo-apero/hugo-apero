@@ -16,7 +16,7 @@
     <figure class="mr4-ns ma0 mb2 mb0-l w-100 w-30-ns">
       <a href="{{ .RelPermalink }}" class="db">
         {{ with $thumbnail }}
-          <img src="{{ .RelPermalink }}" class="db ma0 dim" alt="">
+          <img src="{{ .RelPermalink | relURL }}" class="db ma0 dim" alt="">
         {{ end }}
       </a>
     </figure>
