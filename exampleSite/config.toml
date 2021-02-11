@@ -1,5 +1,4 @@
-baseURL = ""
-relativeURLs = true
+baseURL = "/"
 theme = "hugo-apero"
 languageCode = "en"
 title = "Hugo Apéro"
