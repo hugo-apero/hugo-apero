@@ -5,12 +5,10 @@
       <br />
       {{ partial "shared/attribution.html" }}
     </p>
-    {{ if site.Params.socialInFooter }}
-      {{ if and (not .IsHome) (site.Params.socialInHome) }}
+    {{ if and (not .IsHome) (site.Params.socialInFooter) }}
     <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
       {{ partial "shared/social-links.html" . }}
     </div>
-      {{ end }}
     {{ end }}
     <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
       {{ range site.Menus.footer }}
