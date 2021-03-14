@@ -527,6 +527,7 @@ $fa-font-path: '{{ "webfonts" | absURL }}';
 @import "fontawesome-free-5.15.1-web/scss/solid.scss";
 @import "fontawesome-free-5.15.1-web/scss/regular.scss";
 @import "fontawesome-free-5.15.1-web/scss/brands.scss";
+@import "academicons/academicons.scss";
 
 // import a custom css file in assets
 @import "custom";
