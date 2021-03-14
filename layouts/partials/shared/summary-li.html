@@ -1,7 +1,8 @@
 <section class="featured-content">
 {{ $page := . }} <!--save current page-->
 {{ $pages := where .Site.RegularPages "Type" "in" site.Params.mainSections }}
-{{ $pages := cond ($page.Params.use_featured) (where $pages "Params.featured" true) $pages }}
+{{ $use_featured := cond (ne $page.Params.use_featured nil) $page.Params.use_featured false }}
+{{ $pages := cond $use_featured (where $pages "Params.featured" true) $pages }}
 {{ $grouped := $pages.GroupBy "Section" }}
 {{ range $grouped }}
   {{ $section := $.Site.GetPage "section" .Key }}
