@@ -13,15 +13,15 @@
   <!--sidebar image for the branch bundle-->
   {{ $branch := ($section.Resources.ByType "image").GetMatch "*feature*" }}
   {{- $thumbnail := cond (ne $thumbnail nil) $thumbnail $branch -}}
-  <div class="flex flex-column flex-row-ns mb4 mb5-l {{ if (ne $hex nil) }}items-center{{ end }}">
-    <figure class="mr4-ns ma0 mb2 mb0-l w-100 w-40-ns">
+  <div class="flex flex-column mb4 mb5-l {{ if (ne $hex nil) }}items-center{{ end }} {{ if $root.Params.thumbnail_left }}flex-row-ns{{ else }}flex-row-reverse-ns{{ end }}">
+    <figure class="{{ if $root.Params.thumbnail_left }}mr4-ns{{ else }}ml4-ns{{ end }} ma0 mb2 mb0-l w-100 w-40-ns">
       <a href="{{ .RelPermalink }}" class="db">
         {{ with $thumbnail }}
           <img src="{{ .RelPermalink | absURL }}" class="db ma0 dim" alt="">
         {{ end }}
       </a>
     </figure>
-    <div class="flex flex-column w-100 w-60-ns pl3-ns">
+    <div class="flex flex-column w-100 w-60-ns {{ if $root.Params.thumbnail_left }}pr3-ns{{ else }}pl3-ns{{ end }}">
       <header class="w-100">
         <h1 class="f3 mv2 lh-title underline"><a href="{{ .RelPermalink }}" class="db">{{ .Title | markdownify }}</a></h1>
         {{ range first 1 (.GetTerms "series") }}
