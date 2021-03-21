@@ -41,13 +41,13 @@
       {{ end }}
       {{ if .Params.event }}
         <span class="middot-divider"></span>
-        <p class="f7 dib mv1">{{ .Params.event }} / {{ .Params.location }}</p>
+        <p class="f7 dib mv1">{{ .Params.event }} {{ with .Params.location }}/ {{ . }}{{ end }}</p>
       {{ else if .Params.location }}
         <span class="middot-divider"></span>
         <p class="f7 dib mv1">{{ .Params.location }}</p>
       {{ end }}
+      <br />
       {{ if .Params.show_author_byline }}
-        <span class="middot-divider"></span>
         <p class="f7 dib mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>
       {{ end }}
       {{ if .Params.links }}
@@ -73,13 +73,13 @@
       {{ if $root.Params.show_post_date }}<p class="f7 dib mv1">{{ partial "shared/date-range.html" . }}</p>{{ end }}
       {{ if .Params.event }}
         <span class="middot-divider"></span>
-        <p class="f7 dib mv1">{{ .Params.event }} / {{ .Params.location }}</p>
+        <p class="f7 dib mv1">{{ .Params.event }} {{ with .Params.location }}/ {{ . }}{{ end }}</p>
       {{ else if .Params.location }}
         <span class="middot-divider"></span>
         <p class="f7 dib mv1">{{ .Params.location }}</p>
       {{ end }}
+      <br />
       {{ if $root.Params.show_author_byline }}
-        <span class="middot-divider"></span>
         <p class="f7 dib mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>
       {{ end }}
     </footer>
