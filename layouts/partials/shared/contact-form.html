@@ -1,4 +1,4 @@
-<form name="{{ .Title | lower }}-submission"{{ if .Params.formspree_form_id }} action="https://formspree.io/{{ .Params.formspree_form_id }}"{{ end }} method="post" accept-charset="utf-8">
+<form name="{{ .Title | lower }}-submission"{{ if .Params.formspree_form_id }} action="https://formspree.io/f/{{ .Params.formspree_form_id }}"{{ end }} method="post" accept-charset="utf-8">
   <fieldset id="{{ .Title | lower }}-inputs">
     <legend>{{ .Params.Name }}</legend>
     <label for="full-name">Full Name</label>
