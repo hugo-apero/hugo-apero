@@ -7,6 +7,7 @@ description: |
   minus the blog.
 author: Alison Hill
 show_post_thumbnail: true
+thumbnail_left: false # for list-sidebar only
 show_author_byline: false
 show_post_date: false
 # for listing page layout

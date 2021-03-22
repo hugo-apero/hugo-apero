@@ -5,6 +5,7 @@ description: |
   tags, series, and pagination.
 author: "The R Markdown Team @RStudio"
 show_post_thumbnail: true
+thumbnail_left: true # for list-sidebar only
 show_author_byline: true
 show_post_date: true
 # for listing page layout
