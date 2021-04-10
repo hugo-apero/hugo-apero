@@ -50,7 +50,7 @@
     {{ with $sidebar_pg }}
         <sidebar class="about-sidebar order-1 {{ if $page.Params.sidebar_left }}order-1-l{{ else }}mr4-l order-2-l{{ end }} mh0 w-third-l w-100-ns" id="profile">
           <div class="pt3 pb1 pb2-ns tc ph4">
-            {{ if .Params.avatar }}
+            {{ if .Params.avatar_shape }}
               {{- $avatar := ($sidebar_pg.Resources.ByType "image").GetMatch "*avatar*" -}}
               {{ $avatar_shape := .Params.avatar_shape | default "circle" }}
               {{ with $avatar }}
