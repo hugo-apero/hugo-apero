@@ -2,7 +2,7 @@
 {{ $page := . }}
 <main class="page-main pa4" role="main">
   <section class="page-content mw8 center">
-    
+
     <!--begin header-->
     {{ if .Params.show_header }}
     {{ $header := printf "/%s/%s" .Section "header/index.md" }}
@@ -20,7 +20,7 @@
     <section class="page-body">
       <!--make the flexbox a row only on not small screens-->
       <div class="flex items-start flex-row-l flex-column-ns flex-column {{ if not .Params.show_header }}mt4{{ end }}">
-        
+
         <!--begin main content column: 2/3-->
         {{ $main := printf "/%s/%s" .Section "main/index.md" }}
         {{ with site.GetPage $main }}
@@ -30,7 +30,7 @@
               <h2 class="about-main f2 fw7 tl">{{ . | markdownify }}</h2>
             {{ end }}
           {{ else }}
-            {{ with .Title }}  
+            {{ with .Title }}
             <h1 class="f2 f1-m f-headline-l fw5-ns mv4 lh-solid tracked-tight-ns">{{ . | markdownify }}</h1>
             {{ end }}
           {{ end }}
@@ -46,14 +46,15 @@
 
     <!--begin sidebar-->
     {{ $sidebar := printf "/%s/%s" .Section "sidebar/index.md" }}
-    {{ with site.GetPage $sidebar }}
+    {{ $sidebar_pg := site.GetPage $sidebar }}
+    {{ with $sidebar_pg }}
         <sidebar class="about-sidebar order-1 {{ if $page.Params.sidebar_left }}order-1-l{{ else }}mr4-l order-2-l{{ end }} mh0 w-third-l w-100-ns" id="profile">
           <div class="pt3 pb1 pb2-ns tc ph4">
             {{ if .Params.avatar }}
-              {{ $avatar := printf "/%s%s" .File.Dir .Params.avatar }}
+              {{- $avatar := ($sidebar_pg.Resources.ByType "image").GetMatch "*avatar*" -}}
               {{ $avatar_shape := .Params.avatar_shape | default "circle" }}
-              {{ with $avatar_shape }}
-                <img src="{{ $avatar | relURL }}" class="h4 w4 dib {{if eq . "rounded"}}br3{{end}}{{if eq . "circle"}}br-100{{end}}" alt="avatar">
+              {{ with $avatar }}
+                <img src="{{ .RelPermalink }}" class="h4 w4 dib {{if eq $avatar_shape "rounded"}}br3{{end}}{{if eq $avatar_shape "circle"}}br-100{{end}}" alt="avatar">
               {{ end }}
             {{ end }}
             <h2 class="f-subheadline f4-ns fw6">{{ .Params.author }}</h2>
@@ -64,21 +65,19 @@
               </div>
             {{ end }}
             </div>
-            
-            {{ if .Params.show_audio_link }}
+
+            {{ if .Params.audio_link_label }}
+            {{ $audio := ($sidebar_pg.Resources).GetMatch "*audio*" }}
             <div class="pa1 pa2-ns tc ph4">
-              {{ range .Params.audio_link }}
-                <p class="fw2 pb1">{{ .name }}</p>
+                <p class="fw2 pb1">{{ .Params.audio_link_label }}</p>
                 <p>
-                <audio controls>
-                  <source src="{{ .url }}" type="audio/mp4">
-                  Your browser does not support the audio element.
-                </audio> 
+                {{ with $audio }}
+                <audio src="{{ .RelPermalink }}" controls></audio>
+                {{ end }}
                 </p>
-              {{ end }}
-            </div> 
+            </div>
             {{ end }}
-          
+
           <div class="pa1 pa2-ns tc ph4">
             <h5 class="f-subheadline f4 fw2 ttu tracked">{{ .Params.link_list_label }}</h5>
             <ul class="list measure center ph4 pb4">
@@ -89,9 +88,9 @@
             {{ end }}
             </ul>
           </div>
-        </sidebar>  
+        </sidebar>
         {{ end }}
-        
+
       </div>    <!--close flex-->
     </section>  <!--close body section-->
   </section>    <!--close page content section-->
