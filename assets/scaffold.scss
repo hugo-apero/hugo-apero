@@ -466,12 +466,13 @@ article footer a.btn-links {
   }
 }
 
-// Series + collections table of contents
+// Series, collections, and blog posts table of contents
 
 details#PageTableOfContents nav#TableOfContents ul li:hover {
   @extend .bg-#{$siteBgColor};
 }
 
+nav#TableOfContents ul li,
 nav#SectionTableOfContents ul li,
 nav#SeriesTableOfContents ul li {
   @extend .pl2, .bl, .bw1, .b--transparent;
