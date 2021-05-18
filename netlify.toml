@@ -7,6 +7,7 @@
   HUGO_THEME = "repo"
   HUGO_VERSION = "0.80.0"
   HUGO_ENABLEGITINFO = "true"
+  HUGO_BASEURL = "https://hugo-apero.netlify.app/"
 
 [context.production.environment]
   HUGO_ENV = "production"
