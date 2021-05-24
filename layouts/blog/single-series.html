@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ $page := . }}                       <!--save current page-->
 <main class="page-main pa4" role="main">
-  <section class="page-content mw7 center">
+  <section class="page-content mw8 center">
     <article class="post-content pa0 pr3-l">
       <header class="post-header">
         <h1 class="f1 lh-solid measure-narrow mb3 fw4">{{ .Title }}</h1>
@@ -9,9 +9,13 @@
         {{ if .Params.show_author_byline }}<p class="f6 measure lh-copy mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>{{ end }}
         {{ if .Params.show_post_date }}<p class="f7 db mv0 ttu">{{ .PublishDate.Format "January 2, 2006" }}</p>{{ end }}
       </header>
-      <section class="post-body pt5 pb4">
+      <section class="post-body pt5 pb4 fl w-60">
         {{ .Content }}
       </section>
+      <!--insert ToC-->
+      <aside class="page-sidebar sticky ph1 mv5 fr w-30" role="navigation">
+        {{ partial "shared/toc.html" . }}
+      </aside>
       <footer class="post-footer">
         {{ partial "shared/post-pagination.html" . }}
       </footer>
