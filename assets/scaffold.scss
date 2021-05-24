@@ -510,7 +510,7 @@ nav#SectionTableOfContents ul details {
 
 // Style code
 pre {
-  @extend .pre, .br1, .pa3, .bg-transparent;
+  @extend .pre, .br1, .pa3, .bg-transparent, .overflow-x-auto, .overflow-y-hidden;
   border: 1px solid #ebebeb;
 }
 
