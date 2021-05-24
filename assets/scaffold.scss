@@ -409,6 +409,7 @@ details#PageTableOfContents {
 
 .about-sidebar {
   @extend .self-start, .sticky, .bg-#{$sidebarBgColor}, .#{$sidebarTextColor};
+  height: 75vh;
 }
 .about-sidebar a:not(.link) {
   @extend .#{$sidebarLinkColor};
