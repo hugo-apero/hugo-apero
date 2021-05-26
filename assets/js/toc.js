@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.remove('active');
 			}
 		});
-	}, options);
+	});
 
 	// Track all headings that have an `id` applied
 	document.querySelectorAll('h1[id],h2[id],h3[id],h4[id]').forEach((section) => {
