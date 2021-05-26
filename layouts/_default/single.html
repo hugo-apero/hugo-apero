@@ -1,5 +1,10 @@
 {{ define "main" }}
 <main class="page-main pa4" role="main">
+  <!--insert ToC-->
+  <!--<aside class="sticky ph1 mv5 pt5 fr" role="navigation">-->
+  <aside class="sticky ph1 mv5 pt6 fr">
+    {{ partial "shared/post-toc.html" . }}
+  </aside>
   <section class="page-content mw7 center">
     <article class="post-content pa0 ph4-l">
       <header class="post-header">
