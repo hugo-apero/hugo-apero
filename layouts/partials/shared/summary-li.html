@@ -33,7 +33,8 @@
           </figure>
 
         <div class="w-100 w-80-ns pl3-ns">
-        <p class="measure lh-copy cf">{{ if .Params.Excerpt }}{{ .Params.Excerpt | markdownify }}{{ else }}{{ .Summary | markdownify }}</p>{{ end }}
+      {{ $summary := cond (ne .Params.excerpt nil) .Params.excerpt .Summary }}
+      {{ with $summary }}<p class="measure lh-copy cf">{{ . | markdownify | emojify }}</p>{{ end }}
           <a href="{{ .RelPermalink }}">Read more</a></p>
         </div>
     </article>

@@ -27,7 +27,7 @@
         <h2 class="f5"><i class="fas fa-stream fa-fw pr1"></i><small class="f5 ttu tracked">Series: </small><a class="link i dim" href="{{ $section.RelPermalink }}">{{ .LinkTitle }}</a></h2>
         {{ end }}
       </header>
-      {{ with .Params.excerpt }}<p class="f6 lh-copy mv2 flex-auto">{{ . | markdownify }}</p>{{ end }}
+      {{ with .Params.excerpt }}<p class="f6 lh-copy mv2 flex-auto">{{ . | markdownify | emojify }}</p>{{ end }}
       {{ if .Pages }}
       <!-- Ranges through content/posts/*.md -->
       <h2 class="f5 ttu tracked mv2 pb0">In this section:</h2>
@@ -54,7 +54,7 @@
       <h2 class="f5"><i class="fas fa-stream fa-fw pr1"></i><small class="f5 ttu tracked">Series: </small><a class="link i dim" href="{{ $section.RelPermalink }}">{{ .LinkTitle }}</a></h2>
       {{ end }}
     </header>
-      {{ with .Params.excerpt }}<p class="f6 lh-copy mv2 flex-auto">{{ . | markdownify }}</p>{{ end }}
+      {{ with .Params.excerpt }}<p class="f6 lh-copy mv2 flex-auto">{{ . | markdownify | emojify }}</p>{{ end }}
       {{ if .Pages }}
       <!-- Ranges through content/posts/*.md -->
       <h2 class="f5 ttu tracked mv2 pb0">In this section:</h2>
