@@ -12,27 +12,22 @@ categories:
 layout: single
 ---
 
+
+## Air quality
+
 ```{r}
-knitr::opts_chunk$set(fig.path = "figs/", collapse = TRUE)
+with(airquality, boxplot(Temp ~ Month))
 ```
 
-## An empty post
-
-<i class="fas fa-mug-hot"></i> woot
-
-Yay fontawesome works.
-
-## Well let's try penguins
 
 ```{r}
-library(tidyverse)
-library(palmerpenguins)
+with(airquality, plot(Ozone ~ Temp))
 ```
 
 ```{r}
-ggplot(data = penguins, aes(x = flipper_length_mm)) +
-  geom_histogram(aes(fill = species), alpha = 0.5, position = "identity") +
-  scale_fill_manual(values = c("darkorange","darkorchid","cyan4"))
+mlev <- levels(with(airquality, as.factor(Month)))
+with(airquality, plot(Ozone ~ Temp, 
+                      pch = as.numeric(mlev), 
+                      col = mlev))
 ```
-
 
