@@ -29,7 +29,8 @@
         <h2 class="f5"><i class="fas fa-stream fa-fw pr1"></i><small class="f5 ttu tracked">Series: </small><a class="link i dim" href="{{ $section.RelPermalink }}">{{ .LinkTitle }}</a></h2>
         {{ end }}
       </header>
-      {{ if .Params.excerpt }}<p class="f6 lh-copy mv2 flex-auto measure-wide">{{ .Params.excerpt | markdownify }}{{ else }}{{ .Summary | markdownify }}</p>{{ end }}
+      {{ $summary := cond (ne .Params.excerpt nil) .Params.excerpt .Summary }}
+      {{ with $summary }}<p class="f6 lh-copy mv2 flex-auto measure-wide">{{ . | markdownify | emojify }}</p>{{ end }}
       <footer class="w-100">
       <!--ensures section Params are respected-->
       {{ if .Params.show_post_date }}<p class="f7 dib mv1">{{ partial "shared/date-range.html" . }}</p>{{ end }}
@@ -68,7 +69,8 @@
       <h2 class="f5"><i class="fas fa-stream fa-fw pr1"></i><small class="f5 ttu tracked">Series: </small><a class="link i dim" href="{{ $section.RelPermalink }}">{{ .LinkTitle }}</a></h2>
       {{ end }}
     </header>
-    {{ if .Params.excerpt }}<p class="lh-copy mb4">{{ .Params.excerpt | markdownify }}{{ else }}{{ .Summary | markdownify }}</p>{{ end }}
+      {{ $summary := cond (ne .Params.excerpt nil) .Params.excerpt .Summary }}
+      {{ with $summary }}<p class="lh-copy mb4">{{ . | markdownify | emojify }}</p>{{ end }}
     <footer>
       {{ if $root.Params.show_post_date }}<p class="f7 dib mv1">{{ partial "shared/date-range.html" . }}</p>{{ end }}
       {{ if .Params.event }}

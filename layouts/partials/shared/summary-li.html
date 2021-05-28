@@ -32,15 +32,11 @@
             </a>
           </figure>
 
-        {{ if .Params.excerpt }}
-          <div class="w-100 w-80-ns pl3-ns">
-          <p class="measure lh-copy cf">{{ .Params.excerpt | markdownify }}
-        {{ else }}
-          <div class="w-100 w-80-ns pl3-ns">
-          <p class="measure lh-copy cf">{{ .Summary | markdownify }}
-        {{ end }}
+        <div class="w-100 w-80-ns pl3-ns">
+      {{ $summary := cond (ne .Params.excerpt nil) .Params.excerpt .Summary }}
+      {{ with $summary }}<p class="measure lh-copy cf">{{ . | markdownify | emojify }}</p>{{ end }}
           <a href="{{ .RelPermalink }}">Read more</a></p>
-          </div>
+        </div>
     </article>
   {{ end }} <!--end range across grouped pages-->
 

@@ -13,15 +13,14 @@ layout: single-sidebar
 ---
 
 
+## Air quality
+
+
 ```r
-knitr::opts_chunk$set(fig.path = "figs/", collapse = TRUE)
+with(airquality, boxplot(Temp ~ Month))
 ```
 
-## An empty post
-
-<i class="fas fa-mug-hot"></i> woot
-
-Yay fontawesome works.
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
 
 Lorem ipsum dolor sit amet, orci porttitor pretium semper, sed. Nibh ut pretium porttitor sollicitudin. Sed, odio interdum laoreet iaculis, mi ac ex ac aliquam ac. Auctor blandit? Urna et bibendum, etiam justo mi et finibus non metus et maximus vivamus molestie lobortis. Ante dui a pellentesque porttitor in. In sociis elementum potenti, ad, curabitur. Et platea, habitasse magnis ante massa neque habitasse lacinia commodo vitae, eu. Sed in porttitor rhoncus, mattis sapien suscipit ultrices, vestibulum feugiat. At vestibulum enim, consectetur nec efficitur adipiscing. In, parturient, lobortis aptent suspendisse orci habitasse sit nibh nibh at. Tellus nisl tortor mattis a nullam metus. Lacus donec auctor lacus non, condimentum purus placerat, duis, sollicitudin tortor sociis auctor phasellus sed nunc. Taciti phasellus sagittis ligula sed penatibus ultrices tortor ut libero aliquam., Eros tristique, tristique integer amet lectus non purus augue diam. Blandit leo suscipit habitasse sociis, sed cubilia magna quis arcu, fames ligula. Efficitur sed a primis hac tortor ornare rutrum facilisi purus. In et urna nisl ut purus a feugiat augue sit, vestibulum eleifend. Et egestas proin odio. Nulla justo ut facilisis pulvinar consequat id lobortis nibh. Imperdiet hendrerit purus velit finibus turpis, rutrum. Mauris efficitur, nec fermentum duis, diam vitae blandit facilisi, purus tristique tristique. Class purus sed donec dictum ornare sed. Enim morbi eu mi in finibus. Cum ut ipsum arcu fermentum, bibendum ex.
 
@@ -39,15 +38,21 @@ library(tidyverse)
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
 library(palmerpenguins)
-```
+=======
 
 
 ```r
-ggplot(data = penguins, aes(x = flipper_length_mm)) +
-  geom_histogram(aes(fill = species), alpha = 0.5, position = "identity") +
-  scale_fill_manual(values = c("darkorange","darkorchid","cyan4"))
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## Warning: Removed 2 rows containing non-finite values (stat_bin).
+with(airquality, plot(Ozone ~ Temp))
+```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+
+
+```r
+mlev <- levels(with(airquality, as.factor(Month)))
+with(airquality, plot(Ozone ~ Temp, 
+                      pch = as.numeric(mlev), 
+                      col = mlev))
 ```
 
 <img src="figs/unnamed-chunk-3-1.png" width="672" />
@@ -63,5 +68,7 @@ Lorem ipsum dolor sit amet, sed tincidunt, magnis sem ligula dui pellentesque fi
 Lorem ipsum dolor sit amet, ut semper ut ac vitae, diam. Ac, sapien hendrerit euismod eros metus, luctus, egestas convallis et. Tincidunt eget, platea hendrerit vulputate facilisi pharetra magnis. Quis massa nec ut aliquam aptent laoreet vestibulum, cursus eget vehicula pellentesque in. Ut ligula sed eleifend neque sodales nec hac lorem non vulputate. Sed ridiculus metus viverra sed nullam in, et eget. Quam id, convallis donec risus pulvinar litora. Semper maecenas non interdum tempus tincidunt sit in. Eu non leo. Tempus consequat. Dui quis pharetra. Ad faucibus litora sollicitudin netus nisl dignissim maecenas himenaeos tincidunt venenatis. Facilisi nulla tellus vitae turpis sed a. Quam turpis, vitae sapien et eu conubia sollicitudin sit rhoncus etiam nec. Sodales commodo purus ut magnis, ut vitae mi. Commodo efficitur dis orci eu ornare, convallis sit eu iaculis sed, mauris tristique. Dictum integer praesent, nisi sed porttitor nam in sed quis efficitur nulla., Interdum, nibh ligula metus tellus magna sit blandit non et et ipsum ullamcorper. Vulputate, potenti quam donec augue eleifend himenaeos class. Curae eu ultrices ad eu mattis senectus volutpat phasellus, ut himenaeos dui condimentum vel. Non proin mus praesent iaculis amet eu metus. Velit sollicitudin justo, montes auctor nunc blandit, luctus. Egestas id arcu et. Taciti sit, lacus maximus iaculis lacinia ac fringilla vel! Inceptos sed faucibus, aliquet odio vulputate ac finibus a. Donec lacus commodo congue velit morbi mauris interdum lorem justo sociis pellentesque aliquam. Ut massa justo vel pharetra convallis natoque est in litora eget sed. In ultricies ut, ac ullamcorper ut sed nisl nec. Eget in orci mauris convallis, ac turpis eu maximus et nibh.
 
 ## Last level 2 heading
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 Lorem ipsum dolor sit amet, sed malesuada viverra elit scelerisque. Vitae sed leo nulla mauris. Dolor, diam natoque, metus eleifend. Consectetur enim gravida dui dictumst quis ut est. Sed fusce tristique quis nec et odio ut in etiam rutrum sodales dignissim dictum in suspendisse. Efficitur egestas euismod, lobortis nec lectus est pellentesque in sem dapibus sit non. Feugiat facilisi etiam mi. Natoque turpis sem lacinia himenaeos. Imperdiet vitae nec praesent arcu facilisi in ridiculus. Sociis congue sociis sed. Elementum eget inceptos et quam ipsum vehicula., Augue condimentum a vel rutrum ultrices id sit porttitor dapibus, dis morbi. Pellentesque interdum porta elementum non gravida, vel faucibus amet malesuada dapibus, pulvinar. Diam facilisis varius hendrerit diam congue. Pharetra egestas etiam quis congue. Porta eros, arcu cras, nibh sit in augue at ut fames. Fusce bibendum sit bibendum elementum, facilisis elementum felis. Nec sed? Vel, nunc nisl facilisis lacinia tincidunt. Ut vel lectus torquent nulla ac, aptent at magna augue. Augue dui. Id duis. Porttitor quis eget nullam. Magna sociis.
