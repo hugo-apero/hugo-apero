@@ -12,26 +12,29 @@ categories:
 layout: single-sidebar
 ---
 
-
-## Air quality
-
 ```{r}
-with(airquality, boxplot(Temp ~ Month))
+knitr::opts_chunk$set(fig.path = "figs/", collapse = TRUE)
 ```
+
+## An empty post
+
+<i class="fas fa-mug-hot"></i> woot
+
+Yay fontawesome works.
 
 `r stringi::stri_rand_lipsum(2)`
 
 ## Well let's try penguins
 
 ```{r}
-with(airquality, plot(Ozone ~ Temp))
+library(tidyverse)
+library(palmerpenguins)
 ```
 
 ```{r}
-mlev <- levels(with(airquality, as.factor(Month)))
-with(airquality, plot(Ozone ~ Temp, 
-                      pch = as.numeric(mlev), 
-                      col = mlev))
+ggplot(data = penguins, aes(x = flipper_length_mm)) +
+  geom_histogram(aes(fill = species), alpha = 0.5, position = "identity") +
+  scale_fill_manual(values = c("darkorange","darkorchid","cyan4"))
 ```
 
 `r stringi::stri_rand_lipsum(2)`
