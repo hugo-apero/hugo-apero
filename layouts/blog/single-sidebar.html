@@ -24,9 +24,6 @@
   {{ partial "shared/sidebar-scaffold.html" . }}
   {{ .Scratch.Set "details" "open" }}
   {{ partial "shared/post-details.html" . }}
-  <!--insert ToC-->
-  <aside class="page-sidebar sticky ph1 pv6" role="navigation">
-    {{ partial "shared/post-toc.html" . }}
-  </aside>
+  {{ partial "shared/post-toc.html" . }}
 </aside>
 {{ end }}
