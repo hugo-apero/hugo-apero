@@ -13,55 +13,37 @@ layout: single-sidebar
 ---
 
 
-```r
-knitr::opts_chunk$set(fig.path = "figs/", collapse = TRUE)
-```
-
-## An empty post
-
-<i class="fas fa-mug-hot"></i> woot
-
-Yay fontawesome works.
-
-Lorem ipsum dolor sit amet, consectetur nostra nisi donec et eu ipsum, cubilia ut. In fames elit natoque sit. Nisi venenatis in, proin sed curabitur facilisis sed iaculis pellentesque vulputate velit sed. Placerat leo tincidunt fringilla curae quam sapien vestibulum amet. Maximus inceptos felis nibh maximus. Dapibus aenean, in ultricies sed dui. Vel turpis egestas? Habitasse ut pellentesque magnis interdum nulla sociis, adipiscing. Placerat, ac quam tempus mauris at lorem accumsan sociis sed! Arcu, fusce, condimentum in sit varius pretium, netus facilisi. Elementum mollis finibus, iaculis nisl pretium donec scelerisque sit vitae et tortor., Blandit sed vel blandit mauris fringilla dictum. Praesent cubilia pharetra integer. Quis eget, ultricies volutpat in in ut nunc. Ipsum condimentum risus in sagittis, ac habitasse. Orci mauris. Velit natoque ut maecenas himenaeos, vel. Ipsum ex ac luctus magnis non magnis non malesuada. Semper litora ac, id. Et sed risus. Auctor nullam magna turpis dui himenaeos suscipit sed. Senectus nisl, quis, tortor cras quam non. Eros consectetur taciti nullam pellentesque ut ornare phasellus et enim.
-
-## Well let's try penguins
+## Air quality
 
 
 ```r
-library(tidyverse)
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
-## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-## ✓ tibble  3.1.1     ✓ dplyr   1.0.4
-## ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-## ✓ readr   1.4.0     ✓ forcats 0.5.0
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
-library(palmerpenguins)
+with(airquality, boxplot(Temp ~ Month))
 ```
+
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+
+Lorem ipsum dolor sit amet, donec cubilia litora nunc arcu praesent, semper eros ex. Ipsum leo, tortor pulvinar. Ac eu. Class eget consectetur vitae ac suspendisse id pulvinar in eleifend sociosqu, tempor. Posuere cum cubilia vitae, ac venenatis habitasse nisl. Augue ad duis senectus est ultricies luctus purus nec inceptos ipsum mattis. Dis ipsum ut parturient. Elementum lobortis. Eu, non magna scelerisque ante ac aliquet sociosqu varius in non eu consequat., Lectus duis mauris sed nec diam litora luctus quisque. Feugiat nec nibh hac imperdiet luctus sociosqu per vestibulum et. Eu enim fames et in per malesuada donec. Ut est pulvinar semper lobortis donec nisl eget quis at. Arcu lectus, lorem et urna sed torquent. Ipsum turpis sociis dictum, accumsan augue eget. Ad mattis sociosqu ac sed tristique erat penatibus nec. Faucibus elit leo sit consectetur dictum hendrerit. Volutpat sed per ante egestas enim, aliquam, felis. Ornare class, sem sed eu nam.
 
 
 ```r
-ggplot(data = penguins, aes(x = flipper_length_mm)) +
-  geom_histogram(aes(fill = species), alpha = 0.5, position = "identity") +
-  scale_fill_manual(values = c("darkorange","darkorchid","cyan4"))
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## Warning: Removed 2 rows containing non-finite values (stat_bin).
+mlev <- levels(with(airquality, as.factor(Month)))
+with(airquality, plot(Ozone ~ Temp, 
+                      pch = as.numeric(mlev), 
+                      col = mlev))
 ```
 
-<img src="figs/unnamed-chunk-3-1.png" width="672" />
+<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" />
 
-Lorem ipsum dolor sit amet, tempor sapien ac aliquet vel aenean euismod non mauris! Bibendum efficitur sed donec urna urna morbi at et ligula. Sed dui id, justo, praesent, tortor vitae justo vel quisque quisque donec et. Interdum aenean dictum justo tortor. Cum felis metus sed tempus senectus vestibulum sociis sollicitudin. Adipiscing, dolor egestas est vestibulum. Metus justo libero lacinia fringilla in odio nibh vulputate nibh. Quam conubia dui sed arcu sed nec, morbi in. Vitae, feugiat amet dui turpis varius phasellus. Ipsum nostra primis ligula id lobortis. Vestibulum, eleifend. Non aptent penatibus in ut nulla phasellus egestas., Sed gravida, pretium elementum facilisis, magna in lectus. Porttitor erat ut sodales. Non sit fusce bibendum arcu sapien faucibus ante velit euismod nullam. Risus odio hac, maecenas aptent habitasse nulla. Id, interdum sed dapibus. Eget adipiscing ipsum eu nibh. Eu maximus faucibus at pulvinar nec sapien. Ipsum fringilla lacus ullamcorper justo ac dolor semper nunc. Tristique cubilia enim. Ligula nulla sed vestibulum integer et tincidunt. Porttitor pharetra cursus nam eleifend metus eu tellus elementum. Vitae sed ante libero velit suscipit et at, tellus amet. Quam accumsan euismod ultricies non in litora, volutpat fringilla.
+Lorem ipsum dolor sit amet, nec suscipit libero venenatis sed non id eleifend laoreet. Vestibulum ut nulla, ante eget inceptos nisi turpis. Nulla odio nullam elementum at turpis gravida pulvinar erat eu. Ac pulvinar risus sed est torquent nulla, porta. Vel dignissim dolor quis sit volutpat aliquet habitant, turpis quis. Sed sed risus. Leo sapien, sed justo. Sem et morbi ac sed augue egestas eget rhoncus duis adipiscing sollicitudin mi., At vel massa porttitor mattis, placerat. Ullamcorper, dictum ut molestie lobortis imperdiet. Eu in congue et urna magnis eget, non nisl et. Maecenas massa tortor quis eu scelerisque scelerisque cum. Senectus ligula, ornare molestie primis inceptos, tempus sed. Sed risus mi sed tristique turpis finibus felis risus faucibus. Eget turpis placerat mauris, tortor, sed curabitur. Morbi dui risus condimentum class faucibus, maecenas rhoncus. Blandit vehicula, quis ultricies feugiat in blandit lacus ultrices et fringilla tellus urna in.
 
 ## Another level 2 heading
 
-Lorem ipsum dolor sit amet, risus mauris posuere euismod finibus, risus erat sem aliquam libero et. Augue eros, morbi eget dictumst, posuere diam sed natoque ligula. Mollis libero at lobortis suscipit, et. In adipiscing quam, etiam aliquam ligula a dictumst donec. Tincidunt tempor donec integer, et nisi nulla penatibus at at. Feugiat libero et, ut vestibulum lorem eros ornare pellentesque sociosqu, ac. Metus faucibus, fusce justo eget sed fermentum dolor hac vitae hendrerit ut. Ac porttitor lacinia, augue commodo sollicitudin vulputate. Netus, in sed ac venenatis turpis, sed congue purus justo senectus sed. Aenean felis in mauris sapien. Ac erat ut sed sapien proin est, sed. Sit natoque ultrices egestas turpis vel mauris ut, suscipit. Efficitur natoque justo id donec ante rhoncus rhoncus enim nostra, mauris at. Rutrum nec magnis ut netus erat ut dui netus., Sed massa dui porta, ac gravida vel luctus dui enim. Rhoncus mattis primis massa tempus in ac ligula risus cum phasellus. Sollicitudin sit ac. Scelerisque cubilia condimentum augue nec vulputate, ultricies et. Ultrices a, velit faucibus vitae sed. Eu eu interdum rhoncus egestas. Ac a sit duis eu. Sapien per. Mauris eu torquent vestibulum et odio, ut nullam integer et ullamcorper. Litora dui orci, tristique eleifend mauris. Purus egestas nascetur ut aliquet gravida quam. Est rhoncus tempor ut aliquam lectus. Pretium, eget et semper eu ex sit tempus, molestie venenatis.
+Lorem ipsum dolor sit amet, semper pellentesque, in nisl, vel posuere purus tincidunt at varius, laoreet elit. Tellus ipsum laoreet sed. Ipsum morbi, class quisque nec, hendrerit. Eleifend, ullamcorper primis aliquam et ex in, pretium egestas fames libero. Curabitur fusce malesuada libero mi scelerisque ut sed. Nulla neque luctus, nostra nec neque massa, sollicitudin mauris nulla ultrices. Laoreet dis accumsan, congue dui ligula metus nisi quis et malesuada turpis. Tempus torquent litora malesuada sit at eleifend mollis. Condimentum, id eleifend eu sed penatibus arcu, sed sociosqu. Fermentum proin aliquam dapibus a lorem, nibh sollicitudin aliquam tellus magna., Accumsan convallis eget rutrum facilisi quis leo id, ac, sed magna in at nullam sed. Orci gravida libero, auctor sagittis nam amet id convallis sed id class, habitasse. Non ligula eu non curae eget. Vitae feugiat et in a aenean vitae donec amet massa himenaeos dui est. Porttitor nulla ac congue mauris, porttitor iaculis. Risus eros enim eget augue ipsum nisi in augue sed litora blandit platea. Ante ut velit, porttitor conubia et in et. Nulla sed leo quisque, nisl, a urna in eleifend. Donec integer risus eu ut. In integer pretium netus mauris montes aenean sed pretium a, morbi. Justo nunc finibus adipiscing sed augue odio a est donec platea in quis. Sit a aliquam quam euismod risus blandit ut ridiculus, habitasse ultricies ad nibh elementum. Venenatis condimentum turpis felis aliquet.
 
 ### Level 3 heading
 
-Lorem ipsum dolor sit amet, inceptos, pharetra vivamus placerat litora varius. Ipsum a per, sociosqu, nec vestibulum. Massa tristique, ultrices aliquam mi, ipsum. Nostra venenatis, sociosqu vel amet consectetur, urna urna dolor ad est iaculis ultricies hendrerit eu. Nullam penatibus sodales libero ultrices leo, eget quam ut sagittis. Metus egestas laoreet, felis vel sed, praesent. Non nibh bibendum non vulputate ac cras diam ut. Sed torquent mauris donec molestie., Cubilia pulvinar sed ut sed, donec et nibh placerat iaculis velit mauris porttitor metus posuere. Inceptos hac in sagittis. Sociosqu ipsum vestibulum quam amet luctus, id litora vestibulum! Eleifend quis quisque donec maximus in, pretium molestie nec nulla at. Neque, pulvinar parturient sem laoreet rhoncus nullam! Non dui taciti morbi eu aenean, quam auctor nulla justo tincidunt at. Aliquam gravida sed felis semper penatibus, enim. Rutrum neque et donec ut, quis ipsum convallis fusce. Mi ac tellus fusce eget ut. Sed habitant, augue. Mauris et bibendum scelerisque mattis. Himenaeos mauris, tempus, quis. Libero, morbi vulputate sed nec, metus sit sociosqu porta, nec fusce in.
+Lorem ipsum dolor sit amet, quisque euismod, hendrerit cras purus eu erat phasellus quis leo. Vitae sed justo ac sapien vel hac ultricies cum. Euismod duis, sociosqu sem montes. Augue metus, litora velit tortor eget. Diam, auctor ultricies lobortis. Risus porttitor ultrices amet tincidunt gravida arcu sit a lacus, aenean diam. Sed pellentesque justo, litora fames iaculis litora quam. Eu nullam vestibulum mi mattis sociosqu, vel sit. Inceptos per ut fringilla. Sed conubia at ornare in. Suscipit mauris tempor elementum montes habitant mauris egestas amet., Nibh, neque sit, viverra leo, sed semper nibh. Vel primis est maecenas. Sed quis, nec donec et consectetur lacinia vel pharetra. Mattis vel. Nunc curae posuere lectus ultrices praesent. Molestie dictumst ipsum vulputate dapibus sagittis blandit dapibus purus ultricies. Molestie facilisis ac suspendisse hendrerit sed justo. Mattis gravida ornare ac in dolor ac. A metus ac tincidunt arcu at ut finibus. Dis augue at fermentum eu nec. Interdum sagittis aptent ligula. Ut dictumst aenean gravida sed sem, at eget et. Ornare felis ex pharetra est. Non nec sodales porttitor est at eu elit. Et ligula luctus ultrices augue arcu. In sagittis pulvinar aenean ut sed arcu aliquam commodo ex urna.
 
 ## Last level 2 heading
 
-Lorem ipsum dolor sit amet, quis enim et facilisis nunc. Senectus dis dictum congue. Senectus potenti est sed. Nunc ac, lorem nunc, eu amet quis sed natoque lorem. Nec ullamcorper dis, non dictum nibh lorem et ex efficitur et. Phasellus nec et, nec, ut, etiam cubilia. Sit ut netus est finibus non, duis augue at, integer. Egestas diam, in cras in varius tellus. Elit consectetur volutpat lectus vulputate. Faucibus lobortis etiam curabitur ante nulla ullamcorper sit., Amet cursus dolor et. Molestie at cursus velit, bibendum sagittis arcu. Luctus, nulla sed. Sed arcu a. Ad purus, ut ac. A, ultricies mi nec porttitor eleifend fringilla ullamcorper, eleifend. Sed molestie eu, aliquet lorem suspendisse. Facilisis eget elementum sollicitudin cursus.
+Lorem ipsum dolor sit amet, accumsan rutrum ullamcorper sem nibh justo volutpat. Feugiat ligula. Tortor ante vel aptent id lectus. Quam fermentum sed urna facilisis eu. Id eu eget, vulputate enim. Interdum magnis, nunc id, lectus sem facilisis quis ac risus sit in condimentum. Vestibulum tincidunt, sed, purus vulputate, vel enim! Per, in nam vivamus vulputate aliquam, urna nunc suscipit non proin, amet quam aptent nec. At, nec commodo quisque placerat nec pharetra. Nascetur neque ac primis varius placerat, varius, dictum sed, sem. Neque vitae placerat sed metus., Arcu nibh ut mauris. Sit donec habitasse risus inceptos, dolor. Taciti diam finibus mi. Laoreet, est enim eget amet magnis. Adipiscing ut, congue lacus. Pharetra egestas in in. Aenean nec tempor. Lacinia ut. Urna felis faucibus mus cras et eget sed est vivamus, suscipit. Ac faucibus sed eget nisl pellentesque ullamcorper sed a lectus.
