@@ -1,4 +1,5 @@
 {{ define "main" }}
+
 <main class="page-main pa4" role="main">
   <section class="page-content mw7 center">
     <article class="post-content pa0 ph4-l">
@@ -13,7 +14,6 @@
         {{ partial "shared/btn-links.html" . }}
       </div>
       {{ end }}
-
       </header>
       <section class="post-body pt5 pb4">
         {{ .Content }}
@@ -29,4 +29,7 @@
     {{ end }}
   </section>
 </main>
+<aside class="page-sidebar" role="complementary">
+  {{ partial "shared/post-toc.html" . }}
+</aside>
 {{ end }}

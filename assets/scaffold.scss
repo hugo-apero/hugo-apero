@@ -275,7 +275,15 @@ form {
   .page-main {
     grid-column: 3 / 7;
   }
-
+}
+.single {
+  .page-main {
+    grid-column: 2 / 5;
+  }
+  .page-sidebar {
+    grid-column: 5 / 6;
+    @extend .bg-transparent;
+  }
 }
 
 // SCAFFOLD MEDIA QUERY
@@ -320,6 +328,12 @@ form {
     }
     .page-sidebar {
       order: 2;
+    }
+  }
+  .single {
+    .page-main,
+    .page-sidebar {
+      grid-column: 1 / 7;
     }
   }
 }
