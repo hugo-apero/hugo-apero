@@ -1,5 +1,4 @@
 {{ define "main" }}
-
 <main class="page-main pa4" role="main">
   <section class="page-content mw7 center">
     <article class="post-content pa0 ph4-l">
@@ -8,7 +7,6 @@
         {{ if .Params.subtitle }}<h4 class="f4 mt0 mb4 lh-title measure">{{ .Params.subtitle }}</h4>{{ end }}
         {{ if .Params.show_author_byline }}<p class="f6 measure lh-copy mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>{{ end }}
         {{ if .Params.show_post_date }}<p class="f7 db mv0 ttu">{{ .PublishDate.Format "January 2, 2006" }}</p>{{ end }}
-
       {{ if .Params.links }}
       <div class="ph0 pt5">
         {{ partial "shared/btn-links.html" . }}
@@ -29,6 +27,7 @@
     {{ end }}
   </section>
 </main>
+<!--insert ToC-->
 <aside class="page-sidebar" role="complementary">
   {{ partial "shared/post-toc.html" . }}
 </aside>
