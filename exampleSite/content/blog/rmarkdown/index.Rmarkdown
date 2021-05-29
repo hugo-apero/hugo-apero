@@ -28,6 +28,8 @@ with(airquality, plot(Ozone ~ Temp,
                       col = mlev))
 ```
 
+## An empty post
+
 `r stringi::stri_rand_lipsum(2)`
 
 ## Another level 2 heading
