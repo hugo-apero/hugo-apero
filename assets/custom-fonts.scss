@@ -115,45 +115,42 @@
        url('#{$font-path}/eb-garamond-v14-latin-600italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-/* alegreya-sans-regular - latin */
 @font-face {
-  font-family: 'Alegreya Sans';
+  font-family: 'Atkinson Hyperlegible';
   font-style: normal;
   font-weight: 400;
   src: local(''),
-       url('#{$font-path}/alegreya-sans-v13-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('#{$font-path}/alegreya-sans-v13-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('#{$font-path}/Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2'),
+       url('#{$font-path}/Atkinson-Hyperlegible-Regular-102.woff2') format('woff');
 }
 
-/* alegreya-sans-italic - latin */
 @font-face {
-  font-family: 'Alegreya Sans';
+  font-family: 'Atkinson Hyperlegible';
   font-style: italic;
   font-weight: 400;
   src: local(''),
-       url('#{$font-path}/alegreya-sans-v13-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('#{$font-path}/alegreya-sans-v13-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('#{$font-path}/Atkinson-Hyperlegible-Italic-102a.woff2') format('woff2'),
+       url('#{$font-path}/Atkinson-Hyperlegible-Italic-102.woff2') format('woff');
 }
 
-/* alegreya-sans-700 - latin */
 @font-face {
-  font-family: 'Alegreya Sans';
+  font-family: 'Atkinson Hyperlegible';
   font-style: normal;
   font-weight: 700;
   src: local(''),
-       url('#{$font-path}/alegreya-sans-v13-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('#{$font-path}/alegreya-sans-v13-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('#{$font-path}/Atkinson-Hyperlegible-Bold-102a.woff2') format('woff2'),
+       url('#{$font-path}/Atkinson-Hyperlegible-Bold-102.woff2') format('woff');
 }
 
-/* alegreya-sans-700italic - latin */
 @font-face {
-  font-family: 'Alegreya Sans';
+  font-family: 'Atkinson Hyperlegible';
   font-style: italic;
   font-weight: 700;
   src: local(''),
-       url('#{$font-path}/alegreya-sans-v13-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-       url('#{$font-path}/alegreya-sans-v13-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+       url('#{$font-path}/Atkinson-Hyperlegible-BoldItalic-102a.woff2') format('woff2'),
+       url('#{$font-path}/Atkinson-Hyperlegible-BoldItalic-102.woff2') format('woff');
 }
+
 
 // create custom font classes 
 .custom-text-font { font-family: $customtextFontFamily; }

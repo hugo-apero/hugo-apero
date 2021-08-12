@@ -59,7 +59,7 @@ enableEmoji = true
   
   # use an embedded font-family
   # serif options: Fraunces / EB Garamond / Bitter
-  # sans-serif options: Commissioner / Alegreya Sans / Metropolis
+  # sans-serif options: Commissioner / Atkinson Hyperlegible / Metropolis
   # if you import your own fonts, name them here too
   customtextFontFamily = "Commissioner"
   customheadingFontFamily = "Fraunces"
