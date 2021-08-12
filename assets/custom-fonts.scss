@@ -120,8 +120,8 @@
   font-style: normal;
   font-weight: 400;
   src: local(''),
-       url('#{$font-path}Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2'),
-       url('#{$font-path}Atkinson-Hyperlegible-Regular-102.woff2') format('woff');
+       url('#{$font-path}/Atkinson-Hyperlegible-Regular-102a.woff2') format('woff2'),
+       url('#{$font-path}/Atkinson-Hyperlegible-Regular-102.woff2') format('woff');
 }
 
 @font-face {
@@ -129,8 +129,8 @@
   font-style: italic;
   font-weight: 400;
   src: local(''),
-       url('#{$font-path}Atkinson-Hyperlegible-Italic-102a.woff2') format('woff2'),
-       url('#{$font-path}Atkinson-Hyperlegible-Italic-102.woff2') format('woff');
+       url('#{$font-path}/Atkinson-Hyperlegible-Italic-102a.woff2') format('woff2'),
+       url('#{$font-path}/Atkinson-Hyperlegible-Italic-102.woff2') format('woff');
 }
 
 @font-face {
@@ -138,8 +138,8 @@
   font-style: normal;
   font-weight: 700;
   src: local(''),
-       url('#{$font-path}Atkinson-Hyperlegible-Bold-102a.woff2') format('woff2'),
-       url('#{$font-path}Atkinson-Hyperlegible-Bold-102.woff2') format('woff');
+       url('#{$font-path}/Atkinson-Hyperlegible-Bold-102a.woff2') format('woff2'),
+       url('#{$font-path}/Atkinson-Hyperlegible-Bold-102.woff2') format('woff');
 }
 
 @font-face {
@@ -147,8 +147,8 @@
   font-style: italic;
   font-weight: 700;
   src: local(''),
-       url('#{$font-path}Atkinson-Hyperlegible-BoldItalic-102a.woff2') format('woff2'),
-       url('#{$font-path}Atkinson-Hyperlegible-BoldItalic-102.woff2') format('woff');
+       url('#{$font-path}/Atkinson-Hyperlegible-BoldItalic-102a.woff2') format('woff2'),
+       url('#{$font-path}/Atkinson-Hyperlegible-BoldItalic-102.woff2') format('woff');
 }
 
 
