@@ -22,4 +22,6 @@ Thank you to all the folks who have contributed both technical and creative skil
 
 + [Athanasia Monika Mowinckel :purple_heart:](https://drmowinckels.io/) (for help finding :bug: and SASS support for making color themes work so much better :art:)
 
++ [Jannik Buhr :otter:](https://jmbuhr.de) (enabling math rendering with mathjax and katex)
+
 And last but not least, Eric Anderson and the team at [Formspree](https://formspree.io/) for developing a Hugo theme with such great bones: <https://github.com/formspree/blogophonic-hugo>
