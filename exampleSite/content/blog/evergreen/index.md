@@ -14,7 +14,7 @@ categories:
 ## Rendering mathematical equations
 
 Examples from the [mathjax demo](https://www.mathjax.org/#demo).
-But thy work with `katex` as well.
+But they work with `katex` as well.
 
 ### Rmarkdown
 
