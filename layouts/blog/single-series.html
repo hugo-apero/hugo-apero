@@ -16,14 +16,8 @@
         {{ partial "shared/post-pagination.html" . }}
       </footer>
     </article>
-    {{ if .Params.show_disqus_comments }}
-    <div class="post-comments pa0 pa4-l mt5">
-      {{ template "_internal/disqus.html" . }}
-    </div>
-    {{ else if site.Params.comments.utterances.use_utterances }}
-      <div class="post-comments pa0 pa4-l mt4">
-      {{ partial "shared/utterances.html" . }}
-      </div>
+    {{ if .Params.show_comments }}
+      {{ partial "shared/comments.html" . }}
     {{ end }}
   </section>
 </main>
