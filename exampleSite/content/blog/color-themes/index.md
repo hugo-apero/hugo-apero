@@ -71,11 +71,11 @@ offer an easy way for you to setup your site using your favorite colors. Here ar
 
 + Create a `.scss` file in the new `assets/` folder.
 
-+ Copy the code below for a full set of color parameters giving you control over the theme color scheme. For an option like `siteBgColor`, for example, you can type one of the predefined color names from Tachyons and save the file. Use only color names as shown in the "Color Palette" section of <httpss://tachyons.io/docs/themes/skins/>.
++ Copy the code below for a full set of color parameters giving you control over the theme color scheme. For an option like `siteBgColor`, for example, you can type one of the predefined color names from Tachyons and save the file. Use only color names as shown in the "Color Palette" section of <https://tachyons.io/docs/themes/skins/>.
 
 ```scss
 // basic color options: use only color names as shown in the
-// "Color Palette" section of httpss://tachyons.io/docs/themes/skins/
+// "Color Palette" section of https://tachyons.io/docs/themes/skins/
 $siteBgColor: "near-white" ;
 $sidebarBgColor: "light-gray" ;
 $textColor: "dark-gray" ;
