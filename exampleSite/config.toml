@@ -68,10 +68,8 @@ enableEmoji = true
   textFontFamily = "sans-serif"
   headingFontFamily = "sans-serif"
 
-  # Specify use of utterances or giscus
-  [params.comments]
-    use_utterances = false
-    use_giscus = true
+  # Specify use of utterances, giscus or disqus
+  comments = "utterances"
     
   # Configuration of https://utteranc.es/ for comments
   [params.utterances]
