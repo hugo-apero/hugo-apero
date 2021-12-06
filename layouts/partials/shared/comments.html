@@ -1,8 +1,8 @@
 <div class="post-comments pa0 pa4-l mt4">
-  {{ if site.Params.disqusShortname }}
+  {{ if eq site.Params.comments "disqus"  }}
     {{ template "_internal/disqus.html" . }}
   
-  {{ else if site.Params.comments.use_utterances }}
+  {{ else if eq site.Params.comments "utterances" }}
     {{ with site.Params.utterances }}
       <script src="https://utteranc.es/client.js"
               repo="{{ .repo_name }}"
@@ -14,7 +14,7 @@
               type="text/javascript">
       </script>
     {{ end }}
-  {{ else if site.Params.comments.use_giscus }}
+  {{ else if eq site.Params.comments "giscus" }}
       {{ with site.Params.giscus }}
         <script src="https://giscus.app/client.js"
             data-repo={{ .repo }}
