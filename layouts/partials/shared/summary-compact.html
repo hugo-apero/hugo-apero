@@ -51,7 +51,7 @@
       {{ if .Params.show_author_byline }}
         <p class="f7 dib mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>
       {{ end }}
-      {{ if .Params.links }}
+      {{ if and $root.Params.show_button_links .Params.links }}
         <p class="db pt1">
         {{ partial "shared/btn-links.html" . }}
         </p>
@@ -84,7 +84,11 @@
       {{ if $root.Params.show_author_byline }}
         <p class="f7 dib mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>
       {{ end }}
+      {{ if and $root.Params.show_button_links .Params.links }}
+        <p class="db pt1">
+        {{ partial "shared/btn-links.html" . }}
+        </p>
+      {{ end }}
     </footer>
   {{ end }}
-
 </article>

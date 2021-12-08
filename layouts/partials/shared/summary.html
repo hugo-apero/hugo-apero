@@ -2,7 +2,7 @@
 {{ $section := $page.CurrentSection }}     <!--save branch section-->
 {{ $root := .Scratch.Get "$root" }}     <!--save root section-->
 <article class="mv4 mv5-l bb">
-  
+
   <!--if show_post_thumbnail is TRUE in root-->
   {{ if $root.Params.show_post_thumbnail }}
   <!--featured image for the leaf bundle-->
@@ -34,10 +34,15 @@
       <!--ensures section Params are respected-->
       {{ if $root.Params.show_author_byline }}<p class="f7 db mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>{{ end }}
       {{ if $root.Params.show_post_date }}<p class="f7 db mv1">{{ .PublishDate.Format "January 2, 2006" }}</p>{{ end }}
+      {{ if and $root.Params.show_button_links .Params.links }}
+        <p class="db pt1">
+        {{ partial "shared/btn-links.html" . }}
+        </p>
+      {{ end }}
     </footer>
     </div>
   </div>
-  
+
   <!--if show_post_thumbnail is FALSE in root-->
   {{ else }}
   <div class="measure-wide center mb4 mb5-l">
@@ -52,6 +57,11 @@
     <footer>
       {{ if $root.Params.show_author_byline }}<p class="f7 db mv2">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>{{ end }}
       {{ if $root.Params.show_post_date }}<p class="f7 db mv2">{{ .PublishDate.Format "January 2, 2006" }}</p>{{ end }}
+      {{ if and $root.Params.show_button_links .Params.links }}
+        <p class="db pt1">
+        {{ partial "shared/btn-links.html" . }}
+        </p>
+      {{ end }}
     </footer>
   </div>
   {{ end }}
