@@ -8,6 +8,7 @@ show_post_thumbnail: true
 thumbnail_left: true # for list-sidebar only
 show_author_byline: true
 show_post_date: true
+show_button_links: false
 # for listing page layout
 layout: list-sidebar # list, list-sidebar, list-grid
 

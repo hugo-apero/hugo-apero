@@ -1,0 +1,13 @@
+{{ range .Params.link_list }}
+  {{ $link := .url }}
+  {{ $scheme := (urls.Parse $link).Scheme }}
+  {{ $target := "" }}
+  {{ if not $scheme }}
+    {{ $link = .url | relLangURL }}
+  {{ else if in (slice "http" "https") $scheme }}
+    {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
+  {{ end }}
+  <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-20">
+    <a href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>{{ .name }}</a>
+  </li>
+{{ end }}

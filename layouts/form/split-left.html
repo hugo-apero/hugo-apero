@@ -1,11 +1,11 @@
 {{ define "main" }}
 <main class="page-main pa4" role="main">
   <section class="page-content mw8 center">
-    <div class="flex-ns">
-      <div class="w-50-ns">
+    <div class="flex flex-wrap-reverse">
+      <div class="w-100 w-50-ns">
         {{ partial "shared/contact-form.html" . }}
       </div>
-      <div class="w-50-ns mt3 pl4-m pl6-l">
+      <div class="w-100 w-50-ns mt3 pl4-m pl6-l">
         <h1 class="f2 f1-ns measure lh-solid">{{ .Title }}</h1>
         <p class="f5 measure-narrow lh-copy">{{ .Description | markdownify }}</p>
         {{ if .Params.show_social_links }}
