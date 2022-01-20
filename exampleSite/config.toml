@@ -47,7 +47,7 @@ enableEmoji = true
   
   # use a built-in color theme
   # one of: earth / forest / grayscale / magma / paper / peach / plum /
-  #         poppy / sky / violet / water 
+  #         poppy / primer / sky / violet / water 
   theme = "sky"
   
   # or, leave theme empty & make your own palette
