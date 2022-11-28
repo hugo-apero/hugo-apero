@@ -12,6 +12,7 @@
       {{ .currentPage.Title }}
     {{ else }}
       <a href="{{ .currentPage.RelPermalink }}">{{ .currentPage.Title }}</a>
+      <!-- The following bracket is intentional! It's a breadcrumb arrow. --> >
     {{ end }}
   {{ end }}
 {{ end }}
