@@ -195,7 +195,7 @@ form {
   select,
   [type="text"],
   [type="email"] {
-    @extend .input-reset, .pa3, .mt2, .mb3, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .w-100 ;
+    @extend .input-reset, .pa3, .mt2, .mb3, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .custom-text-color, .w-100;
   }
   [type="button"],
   [type="reset"],
@@ -207,13 +207,13 @@ form {
     @extend .mv2, .mh1 ;
   }
   textarea {
-    @extend .input-reset, .pa3, .mt2, .mb3, .mh0, .lh-copy, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .w-100 ;
+    @extend .input-reset, .pa3, .mt2, .mb3, .mh0, .lh-copy, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .custom-text-color, .w-100;
   }
   select:focus,
   textarea:focus,
   [type="text"]:focus,
   [type="email"]:focus {
-    @extend .bg-white-50 ;
+    @extend .bg-custom-sidebar-bg-color
   }
 }
 
