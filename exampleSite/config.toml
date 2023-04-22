@@ -46,8 +46,8 @@ enableEmoji = true
   twitter = "apreshill"
   
   # use a built-in color theme
-  # one of: forest / grayscale / peach / plum /
-  #         poppy / sky / violet / water 
+  # one of: earth / forest / grayscale / magma / paper / peach / plum /
+  #         poppy / primer / sky / violet / water 
   theme = "sky"
   
   # or, leave theme empty & make your own palette

@@ -16,7 +16,7 @@ $font-path: '{{ "fonts" | relURL }}';
 // one of: forest / grayscale / peach / plum / poppy / sky / violet / water 
 // precedence: Params.theme > .Params.custom_colors 
 // custom colors may either be named tachyons color or hex codes
-{{ $themes := (slice "forest" "grayscale" "peach" "plum" "poppy" "sky" "violet" "water") }}
+{{ $themes := (slice "earth" "forest" "grayscale" "magma" "paper" "peach" "plum" "poppy" "primer" "sky" "violet" "water") }}
 {{ if site.Params.theme }}
   {{ if in $themes site.Params.theme }}
     @import '{{ printf "theme/%s" site.Params.theme }}';
