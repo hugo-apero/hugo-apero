@@ -1,1 +1,16 @@
-{{ if .text_link_label }}<small class="db f7"><a href="{{ .text_link_url }}" class="dib fw7 ttu bt bw1 b--black-10 pt3">{{ .text_link_label }}</a></small>{{ end }}
+{{ if or .text_link_label .categories_link .series_link .tags_link }}
+  <div class="dib bt bw1 b--black-10">
+    {{ if .text_link_label }}
+      <small class="db f7 pt3"><a href="{{ .text_link_url }}" class="dib fw7 ttu">{{ .text_link_label }}</a></small>
+    {{ end }}
+    {{ if .categories_link }}
+      <small class="db f7 pt3"><a href="/categories/" class="dib fw7 ttu">Categories</a></small>
+    {{ end }}
+    {{ if .series_link }}
+      <small class="db f7 pt3"><a href="/series/" class="dib fw7 ttu">Series</a></small>
+    {{ end }}
+    {{ if .tags_link }}
+      <small class="db f7 pt3"><a href="/tags/" class="dib fw7 ttu">Tags</a></small>
+    {{ end }}
+  </div>
+{{ end }}
