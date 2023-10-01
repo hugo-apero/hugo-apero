@@ -1,0 +1,12 @@
+{{ $page := . }}                       <!--save current page-->
+{{ $page_toc_label := .Params.sidebar.text_contents_label | default "On this page" }}
+<!--check for headers-->
+{{ $headers := findRE "<h[2].*>" $page.Content }}
+{{- $has_headers := ge (len $headers) 1 -}}
+{{- if $has_headers -}}
+<!--insert ToC-->
+<nav id="TableOfContents" class="sticky ph4 pb4 pt6" role="navigation">
+  <h2 class="mv0 f5 fw7 ttu tracked dib">{{ $page_toc_label }}</h2>
+    {{ .TableOfContents }}
+</nav>
+{{ end }}
