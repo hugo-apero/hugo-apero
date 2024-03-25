@@ -55,8 +55,9 @@
             {{ if .Params.avatar_shape }}
               {{- $avatar := ($sidebar_pg.Resources.ByType "image").GetMatch "*avatar*" -}}
               {{ $avatar_shape := .Params.avatar_shape | default "circle" }}
+              {{ $avatar_border := .Params.avatar_border }}
               {{ with $avatar }}
-                <img src="{{ .RelPermalink }}" class="h4 w4 dib {{if eq $avatar_shape "rounded"}}br3{{end}}{{if eq $avatar_shape "circle"}}br-100{{end}}" alt="avatar">
+                <img src="{{ .RelPermalink }}" class="h4 w4 dib {{if eq $avatar_shape "rounded"}}br3{{end}}{{if eq $avatar_shape "circle"}}br-100{{end}} {{ if $avatar_border }} ba bw1 {{end}}" alt="avatar">
               {{ end }}
             {{ end }}
             <h2 class="f-subheadline f4-ns fw6">{{ .Params.author }}</h2>
