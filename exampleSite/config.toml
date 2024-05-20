@@ -4,8 +4,6 @@ languageCode = "en"
 title = "Hugo Apéro"
 author = "Alison Hill"
 copyright = "" # set to override the auto generated copyright using org info and now year
-googleAnalytics = ""
-disqusShortname = "" # see params.utterances to use utterances instead of Disqus
 metaDataFormat = "yaml"
 footnoteReturnLinkContents = "&#8617;" # ↩
 # set deliberately low for testing choose your preffered number based on the blog layout you've chosen
