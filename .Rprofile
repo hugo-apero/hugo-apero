@@ -6,8 +6,8 @@ local({
   # use theme in root
   options(blogdown.themesDir = '../..')
   # pin hugo version
-  ## updating the pinned Hugo version to 0.89.2. See issue #57 (https://github.com/hugo-apero/hugo-apero/issues/57)
-  options(blogdown.hugo.version = "0.89.2")
+  ## updating the pinned Hugo version to 0.126.1)
+  options(blogdown.hugo.version = "0.126.1")
   # full markdown mode
   options(blogdown.method = "markdown")
 })

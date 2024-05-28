@@ -5,7 +5,7 @@
 
 [build.environment]
   HUGO_THEME = "repo"
-  HUGO_VERSION = "0.80.0"
+  HUGO_VERSION = "0.126.1"
   HUGO_ENABLEGITINFO = "true"
   HUGO_BASEURL = "https://hugo-apero.netlify.app/"
 
