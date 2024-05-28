@@ -524,10 +524,10 @@ html, body {
 
 // Fontawesome icons
 $fa-font-path: '{{ "webfonts" | relURL }}';
-@import "fontawesome-free-5.15.1-web/scss/fontawesome.scss";
-@import "fontawesome-free-5.15.1-web/scss/solid.scss";
-@import "fontawesome-free-5.15.1-web/scss/regular.scss";
-@import "fontawesome-free-5.15.1-web/scss/brands.scss";
+@import "fontawesome-free-6.5.2-web/scss/fontawesome.scss";
+@import "fontawesome-free-6.5.2-web/scss/solid.scss";
+@import "fontawesome-free-6.5.2-web/scss/regular.scss";
+@import "fontawesome-free-6.5.2-web/scss/brands.scss";
 @import "academicons/academicons.scss";
 
 // import a custom css file in assets
