@@ -37,7 +37,9 @@
           {{ if .Params.show_intro }}
             <div class="pv3 f4 measure lh-copy dib">{{ .Params.intro | markdownify }}</div>
           {{ end }}
+          {{ if gt $page.Params.number_featured 0 }}
           {{ partial "shared/summary-li" . }}
+          {{ end }}
           {{ if .Params.show_outro }}
             <div class="pt3 measure-wide lh-copy cf">{{ .Params.outro | markdownify }}</div>
           {{ end }}
@@ -81,11 +83,7 @@
           <div class="pa1 pa2-ns tc ph4">
             <h5 class="f-subheadline f4 fw2 ttu tracked">{{ .Params.link_list_label }}</h5>
             <ul class="list measure center ph4 pb4">
-            {{ range .Params.link_list }}
-              <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-20">
-                <a href="{{ .url }}" target="_blank">{{ .name }}</a>
-              </li>
-            {{ end }}
+              {{ partial "shared/about-links" . }}
             </ul>
           </div>
         </sidebar>

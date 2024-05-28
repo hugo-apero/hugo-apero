@@ -18,14 +18,23 @@
   </div>
   {{ end }}
   <div class="ph0 pa2-m pa3-l">
-    <h1 class="f3 f4-l mv2 lh-title fw4"><a href="{{ .RelPermalink }}" class="db">{{ .Title | markdownify }}</a></h1>
-    {{ range first 1 (.GetTerms "series") }}
-      <h2 class="f5"><i class="fas fa-stream fa-fw pr1"></i><small class="f5 ttu tracked">Series: </small><a class="link i dim" href="{{ $section.RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ end }}
+    <header>
+      <h1 class="f3 f4-l mv2 lh-title fw4"><a href="{{ .RelPermalink }}" class="db">{{ .Title | markdownify }}</a></h1>
+      {{ range first 1 (.GetTerms "series") }}
+        <h2 class="f5"><i class="fas fa-stream fa-fw pr1"></i><small class="f5 ttu tracked">Series: </small><a class="link i dim" href="{{ $section.RelPermalink }}">{{ .LinkTitle }}</a></h2>
+      {{ end }}
+    </header>
       {{ $summary := cond (ne .Params.excerpt nil) .Params.excerpt .Summary }}
       {{ with $summary }}<p class="f6 lh-copy">{{ . | markdownify | emojify }}</p>{{ end }}
     <!--ensures section Params are respected-->
-    {{ if $root.Params.show_author_byline }}<p class="f7 db mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>{{ end }}
-    {{ if $root.Params.show_post_date }}<p class="f7 db mv1">{{ .PublishDate.Format "January 2, 2006" }}</p>{{ end }}
+    <footer>
+      {{ if $root.Params.show_author_byline }}<p class="f7 db mv1">{{ if .Params.author }}By {{ .Params.author }}{{ end }}{{ with .Params.categories }} in{{ range . }} <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> {{ end }}{{ end }}</p>{{ end }}
+      {{ if $root.Params.show_post_date }}<p class="f7 db mv1">{{ .PublishDate.Format "January 2, 2006" }}</p>{{ end }}
+      {{ if and $root.Params.show_button_links .Params.links }}
+          <p class="db pt1">
+          {{ partial "shared/btn-links.html" . }}
+          </p>
+      {{ end }}
+    </footer>
   </div>
 </article>

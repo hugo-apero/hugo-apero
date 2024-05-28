@@ -16,7 +16,7 @@ $font-path: '{{ "fonts" | relURL }}';
 // one of: forest / grayscale / peach / plum / poppy / sky / violet / water 
 // precedence: Params.theme > .Params.custom_colors 
 // custom colors may either be named tachyons color or hex codes
-{{ $themes := (slice "forest" "grayscale" "peach" "plum" "poppy" "sky" "violet" "water") }}
+{{ $themes := (slice "earth" "forest" "grayscale" "magma" "paper" "peach" "plum" "poppy" "primer" "sky" "violet" "water") }}
 {{ if site.Params.theme }}
   {{ if in $themes site.Params.theme }}
     @import '{{ printf "theme/%s" site.Params.theme }}';
@@ -195,7 +195,7 @@ form {
   select,
   [type="text"],
   [type="email"] {
-    @extend .input-reset, .pa3, .mt2, .mb3, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .w-100 ;
+    @extend .input-reset, .pa3, .mt2, .mb3, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .custom-text-color, .w-100;
   }
   [type="button"],
   [type="reset"],
@@ -207,13 +207,13 @@ form {
     @extend .mv2, .mh1 ;
   }
   textarea {
-    @extend .input-reset, .pa3, .mt2, .mb3, .mh0, .lh-copy, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .w-100 ;
+    @extend .input-reset, .pa3, .mt2, .mb3, .mh0, .lh-copy, .ba, .br0, .b--#{$borderColor}, .bg-transparent, .custom-text-color, .w-100;
   }
   select:focus,
   textarea:focus,
   [type="text"]:focus,
   [type="email"]:focus {
-    @extend .bg-white-50 ;
+    @extend .bg-custom-sidebar-bg-color
   }
 }
 
@@ -409,7 +409,6 @@ details#PageTableOfContents {
 
 .about-sidebar {
   @extend .self-start, .sticky, .bg-#{$sidebarBgColor}, .#{$sidebarTextColor};
-  height: 100vh;
 }
 .about-sidebar a:not(.link) {
   @extend .#{$sidebarLinkColor};
