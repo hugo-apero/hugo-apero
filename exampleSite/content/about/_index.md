@@ -5,8 +5,9 @@ description: |
 show_header: true
 sidebar_left: false
 # Keep this! Do not edit.
+headless: false
 cascade:
-  headless: false
+  headless: true
 ---
 
 ** index doesn't contain a body, just front matter above.
