@@ -9,7 +9,7 @@ images:
 series:
 tags:
 categories:
-layout: single
+layout: single-sidebar
 ---
 
 
@@ -19,10 +19,7 @@ layout: single
 with(airquality, boxplot(Temp ~ Month))
 ```
 
-
-```{r}
-with(airquality, plot(Ozone ~ Temp))
-```
+`r stringi::stri_rand_lipsum(2)`
 
 ```{r}
 mlev <- levels(with(airquality, as.factor(Month)))
@@ -31,3 +28,16 @@ with(airquality, plot(Ozone ~ Temp,
                       col = mlev))
 ```
 
+`r stringi::stri_rand_lipsum(2)`
+
+## Another level 2 heading
+
+`r stringi::stri_rand_lipsum(2)`
+
+### Level 3 heading
+
+`r stringi::stri_rand_lipsum(2)`
+
+## Last level 2 heading
+
+`r stringi::stri_rand_lipsum(2)`
