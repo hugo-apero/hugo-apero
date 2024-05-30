@@ -37,8 +37,8 @@
           {{ if .Params.show_intro }}
             <div class="pv3 f4 measure lh-copy dib">{{ .Params.intro | markdownify }}</div>
           {{ end }}
-          {{ if gt $page.Params.number_featured 0 }}
-          {{ partial "shared/summary-li" . }}
+          {{ if gt .Params.number_featured 0 }}
+             {{ partial "shared/summary-li" . }}
           {{ end }}
           {{ if .Params.show_outro }}
             <div class="pt3 measure-wide lh-copy cf">{{ .Params.outro | markdownify }}</div>
