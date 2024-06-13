@@ -20,8 +20,8 @@ enableEmoji = true
     unsafe = true  # Enable user to embed HTML snippets in Markdown content.
     hardwraps = false 
   [markup.tableOfContents]
-    startLevel = 2
-    endLevel = 2
+    startLevel = 1
+    endLevel = 3
     ordered = false
   [markup.highlight]
     # one of: https://xyproto.github.io/splash/docs/ 
