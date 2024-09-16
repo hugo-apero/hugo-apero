@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://www.example.org/"
 theme = "hugo-apero"
 languageCode = "en"
 title = "Hugo Apéro"
