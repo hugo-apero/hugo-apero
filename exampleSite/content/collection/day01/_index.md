@@ -2,7 +2,6 @@
 title: "Day 01"
 # list or single layouts are possible
 layout: single-series # list, list-sidebar, single-series
-show_post_thumbnail: true
 weight: 2
 publishDate: 2021-01-22
 date: 2021-01-25
