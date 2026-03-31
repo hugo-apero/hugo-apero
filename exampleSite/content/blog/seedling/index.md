@@ -6,7 +6,7 @@ date: 2021-01-02
 author: "Alison Hill"
 draft: false
 # layout options: single, single-sidebar
-layout: single
+layout: single-sidebar
 categories:
 - Theme features
 ---
