@@ -4,7 +4,7 @@
   <section class="page-content mw9 center">
     <div class="flex-l items-center" style="{{ if .Params.image_left }}flex-direction: row-reverse;{{ end }}">
       <div class="mh4 w-50-l {{ if not .Params.text_align_left }}tr{{ end }}">
-        {{ with .Params.title }}<h1 class="f2 f1-m f-subheadline-l fw5-ns mv4 lh-solid">{{ . }}</h1>{{ end }}
+        <h1 class="f2 f1-m f-subheadline-l fw5-ns mv4 lh-solid">{{ .Params.headline | default .Params.title }}</h1>
         {{ with .Params.subtitle }}<h2 class="f5 fw7 mt0 mb4 ttu tracked">{{ . }}</h2>{{ end }}
         {{ if .Params.show_social_links }}{{ partial "shared/social-links.html" . }}{{ end }}
         {{ with .Params.description }}<p class="f4 mt4 lh-copy">{{ . | markdownify }}</p>{{ end }}
