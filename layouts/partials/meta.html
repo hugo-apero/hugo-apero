@@ -37,7 +37,7 @@
 <meta property="og:description" content="{{ $desc }}" />
 <meta property="og:type" content="{{ if .IsPage }}page{{ else }}website{{ end }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
-<meta property="og:locale" content="{{ site.LanguageCode | default "en-us" }}">
+<meta property="og:locale" content="{{ site.Language.Locale | default "en-us" }}">
 
 <!--sharing images-->
 <!--adapted from: https://github.com/kaushalmodi/hugo-bare-min-theme/blob/6195b5e377c56791ba4067ac0ec5286bf336aedf/layouts/partials/twitter_cards.html-->

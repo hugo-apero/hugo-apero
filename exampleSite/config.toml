@@ -1,6 +1,6 @@
 baseURL = "https://www.example.org/"
 theme = "hugo-apero"
-languageCode = "en"
+defaultContentLanguage = "en"
 title = "Hugo Apéro"
 author = "Alison Hill"
 copyright = "" # set to override the auto generated copyright using org info and now year
