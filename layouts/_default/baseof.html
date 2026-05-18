@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" dir="ltr">
+<html lang="{{ .Site.Language.Locale }}" dir="ltr">
     {{- partial "head.html" . -}}
     <body>
       <div class="grid-container{{ if .Params.layout }} {{ .Params.layout }}{{ end }}{{ if .IsHome }} home{{ end }}">
